@@ -1,0 +1,350 @@
+{
+  "status": true,
+  "message": "Movies fetched successfully",
+  "data": [
+    {
+      "id": 1,
+      "title": "The HomiTv test",
+      "banner": "https://homitv.traytontech.com/test/test.png",
+      "trailer": "https://homitv.traytontech.com/test/test.mp4",
+      "movie": "https://homitv.traytontech.com/test/test.mp4",
+      "category": "Documentary",
+      "status": "Active",
+      "rating": "PG13",
+      "staring": "Friedrich Sam, Kwame Twum, Adolf Woru",
+      "views": 2001,
+      "premium": "No",
+      "released": 2022,
+      "synopsis": "This is a short message about the TV Series",
+      "seasons": {
+        "S1": [
+          {
+            "id": 1,
+            "title": "The HomiTv test EP1",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 2,
+            "title": "The HomiTv test EP2",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 3,
+            "title": "The HomiTv test EP3",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 4,
+            "title": "The HomiTv test EP4",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 5,
+            "title": "The HomiTv test EP5",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          }
+        ],
+        "S2": [
+          {
+            "id": 1,
+            "title": "The HomiTv test EP1",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 2,
+            "title": "The HomiTv test EP2",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 3,
+            "title": "The HomiTv test EP3",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 4,
+            "title": "The HomiTv test EP4",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 5,
+            "title": "The HomiTv test EP5",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          }
+        ]
+      },
+      "suggestions": [
+        {
+          "id": 2,
+          "title": "Half London",
+          "banner": "https://homitv.traytontech.com/test/test.png",
+          "trailer": "https://homitv.traytontech.com/test/test.mp4",
+          "movie": "https://homitv.traytontech.com/test/test.mp4",
+          "category": "Drama",
+          "status": "Active",
+          "rating": "PG",
+          "staring": "Friedrich Sam, Kwame Twum, Adolf Woru",
+          "views": 5000,
+          "premium": "Yes",
+          "released": 1990,
+          "synopsis": "This is a short message about the TV Series",
+          "created_at": "2022-11-02T23:56:52.878Z",
+          "updated_at": "2022-11-02T23:56:52.878Z",
+          "deleted_at": null
+        },
+        {
+          "id": 3,
+          "title": "Family",
+          "banner": "https://homitv.traytontech.com/test/test.png",
+          "trailer": "https://homitv.traytontech.com/test/test.mp4",
+          "movie": "https://homitv.traytontech.com/test/test.mp4",
+          "category": "Drama",
+          "status": "Active",
+          "rating": "PG13",
+          "staring": "Friedrich Sam, Kwame Twum, Adolf Woru",
+          "views": 6090,
+          "premium": "Yes",
+          "released": 2022,
+          "synopsis": "This is a short message about the TV Series",
+          "created_at": "2022-11-02T23:56:52.878Z",
+          "updated_at": "2022-11-02T23:56:52.878Z",
+          "deleted_at": null
+        }
+      ],
+      "created_at": "2022-11-02T23:56:52.878Z",
+      "updated_at": "2022-11-02T23:56:52.878Z",
+      "deleted_at": null
+    },
+    {
+      "id": 2,
+      "title": "All Or Nothing",
+      "banner": "https://homitv.traytontech.com/test/test.png",
+      "trailer": "https://homitv.traytontech.com/test/test.mp4",
+      "movie": "https://homitv.traytontech.com/test/test.mp4",
+      "category": "Drama",
+      "status": "Active",
+      "rating": "16+",
+      "staring": "Friedrich Sam, Kwame Twum, Adolf Woru",
+      "views": 2001,
+      "premium": "Yes",
+      "released": 2022,
+      "synopsis": "This is a short message about the TV Series",
+      "seasons": {
+        "S1": [
+          {
+            "id": 1,
+            "title": "All Or Nothing EP1",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 2,
+            "title": "All Or Nothing EP2",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 3,
+            "title": "All Or Nothing EP3",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 4,
+            "title": "All Or Nothing EP4",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 5,
+            "title": "All Or Nothing EP5",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          }
+        ],
+        "S2": [
+          {
+            "id": 1,
+            "title": "All Or Nothing EP1",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 2,
+            "title": "All Or Nothing EP2",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 3,
+            "title": "All Or Nothing EP3",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 4,
+            "title": "All Or Nothing EP4",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          },
+          {
+            "id": 5,
+            "title": "All Or Nothing EP5",
+            "banner": "https://homitv.traytontech.com/test/test.png",
+            "trailer": "https://homitv.traytontech.com/test/test.mp4",
+            "movie": "https://homitv.traytontech.com/test/test.mp4",
+            "status": "Active",
+            "created_at": "2022-11-02T23:56:52.878Z",
+            "updated_at": "2022-11-02T23:56:52.878Z",
+            "deleted_at": null
+          }
+        ]
+      },
+      "suggestions": [
+        {
+          "id": 5,
+          "title": "The Corner",
+          "banner": "https://homitv.traytontech.com/test/test.png",
+          "trailer": "https://homitv.traytontech.com/test/test.mp4",
+          "movie": "https://homitv.traytontech.com/test/test.mp4",
+          "category": "Comedy",
+          "status": "Active",
+          "rating": "PG16",
+          "staring": "Friedrich Sam, Kwame Twum, Adolf Woru",
+          "views": 5000,
+          "premium": "Yes",
+          "released": 1990,
+          "synopsis": "This is a short message about the TV Series",
+          "created_at": "2022-11-02T23:56:52.878Z",
+          "updated_at": "2022-11-02T23:56:52.878Z",
+          "deleted_at": null
+        },
+        {
+          "id": 12,
+          "title": "The Residence",
+          "banner": "https://homitv.traytontech.com/test/test.png",
+          "trailer": "https://homitv.traytontech.com/test/test.mp4",
+          "movie": "https://homitv.traytontech.com/test/test.mp4",
+          "category": "Documentary",
+          "status": "Active",
+          "rating": "13+",
+          "staring": "Edwin Agbeli Jnr,  Anisa Baisie",
+          "views": 6090,
+          "premium": "Yes",
+          "released": 2022,
+          "synopsis": "This is a short message about the TV Series",
+          "created_at": "2022-11-02T23:56:52.878Z",
+          "updated_at": "2022-11-02T23:56:52.878Z",
+          "deleted_at": null
+        }
+      ],
+      "created_at": "2022-11-02T23:56:52.878Z",
+      "updated_at": "2022-11-02T23:56:52.878Z",
+      "deleted_at": null
+    }
+  ]
+}
