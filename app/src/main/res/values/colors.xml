@@ -9,9 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#bebebe</color>
 
+    <color name="item_color_active">#FF6200EE</color>
+    <color name="item_color_inactive">#8b8b8b</color>
+
 <!--    <color name="colorPrimary">#FFFFFF</color>-->
 <!--    <color name="colorPrimaryDark">#7c7c7c</color>-->
-<!--    <color name="colorAccent">#FF0000</color>-->
+    <color name="colorRed">#FF0000</color>
 
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>

@@ -1,6 +1,11 @@
 package com.tikay.homitest.domain.model;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class User implements Parcelable {
     private int id;
     private String name;
     private String userName;
@@ -76,6 +81,44 @@ public class User {
     public void setPremium(boolean premium) {
         isPremium = premium;
     }
+
+    public User(Parcel in){
+        this.id = in.readInt();
+        this.name = in.readString();
+        this.userName = in.readString();
+        this.email = in.readString();
+        this.phone = in.readString();
+        this.password = in.readString();
+        this.isPremium = in.readInt() == 1;
+    }
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>(){
+        public User createFromParcel(Parcel in){
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeInt(this.isPremium ? 1 : 0);
+        dest.writeString(this.name);
+        dest.writeString(this.name);
+        dest.writeString(this.userName);
+        dest.writeString(this.email);
+        dest.writeString(this.phone);
+        dest.writeString(this.password);
+    }
+
 
 
 }

@@ -2,8 +2,7 @@ package com.tikay.homitest;
 
 import android.app.Application;
 
-
-import com.tikay.homitest.features.home.utils.Utils;
+import com.tikay.homitest.presentation.utils.Utils;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 

@@ -1,28 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/homeFragment">
+
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.tikay.homitest.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/homeFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.HomeFragment"
+        android:label="HomeFragment" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_homeFragment_to_seasonFragment"
+            app:destination="@id/seasonFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="seasonId"
+                app:argType="integer"
+                android:defaultValue="1" />
+        </action>
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.tikay.homitest.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/categoriesFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.CategoriesFragment"
+        android:label="CategoriesFragment" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_categoriesFragment_to_seasonFragment"
+            app:destination="@id/seasonFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="seasonId"
+                app:argType="integer"
+                android:defaultValue="1" />
+        </action>
     </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.MenuFragment"
+        android:label="MenuFragment" >
+        <action
+            android:id="@+id/action_menuFragment_to_seasonFragment"
+            app:destination="@id/seasonFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="seasonId"
+                app:argType="integer"
+                android:defaultValue="1" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/seasonFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.SeasonFragment"
+        android:label="SeasonFragment" >
+        <action
+            android:id="@+id/action_seasonFragment_to_episodeFragment"
+            app:destination="@id/episodeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="episodeId"
+                app:argType="integer"
+                android:defaultValue="1" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.EpisodeFragment"
+        android:label="EpisodeFragment" />
 </navigation>
