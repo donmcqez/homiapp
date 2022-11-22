@@ -19,7 +19,7 @@
             <argument
                 android:name="seasonId"
                 app:argType="integer"
-                android:defaultValue="1" />
+                android:defaultValue="0" />
         </action>
     </fragment>
     <fragment
@@ -70,11 +70,41 @@
             <argument
                 android:name="episodeId"
                 app:argType="integer"
-                android:defaultValue="1" />
+                android:defaultValue="0" />
+        </action>
+        <action
+            android:id="@+id/action_seasonFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="seasonId"
+                app:argType="integer"
+                android:defaultValue="0" />
         </action>
     </fragment>
     <fragment
         android:id="@+id/episodeFragment"
         android:name="com.tikay.homitest.presentation.ui.fragment.EpisodeFragment"
-        android:label="EpisodeFragment" />
+        android:label="EpisodeFragment" >
+        <action
+            android:id="@+id/action_episodeFragment_to_authFragment"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_episodeFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.AuthFragment"
+        android:label="AuthFragment" />
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.PlayerFragment"
+        android:label="PlayerFragment" />
 </navigation>
+
+
+

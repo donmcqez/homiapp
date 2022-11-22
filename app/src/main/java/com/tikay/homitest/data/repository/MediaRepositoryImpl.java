@@ -17,7 +17,9 @@ public class MediaRepositoryImpl implements MediaRepository {
     }
 
     @Override
-    public Call<ApiResponse> getMedias() {
+    public Call<ApiResponse> getMediaList() {
         return homiRemoteService.getMediaData();
     }
+
+
 }

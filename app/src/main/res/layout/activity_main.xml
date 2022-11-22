@@ -95,12 +95,12 @@
         android:alpha="0"
         android:background="#000000" />
 
-    <com.tikay.homitest.presentation.ui.widget.drag.DragFrame
+    <!--<com.tikay.homitest.presentation.ui.widget.drag.DragFrame
         android:id="@+id/drag_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        tools:visibility="visible" />
+        tools:visibility="visible" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

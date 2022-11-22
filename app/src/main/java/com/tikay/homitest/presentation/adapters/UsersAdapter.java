@@ -48,31 +48,20 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         }
 
         private void bind(Media media) {
-//            setName(user.getFull_name());
-//            setStatus(user.getStatus());
-//            setImage(user.getThumb_image());
-//
-//            if (user.getOnline().equals(Config.ONLINE)) {
-//                ivOnline.setVisibility(View.VISIBLE);
-//            } else {
-//                ivOnline.setVisibility(View.GONE);
-//            }
-
+            Context context = itemView.getContext();
+            int margin = (int) Utils.dp2px(context,8);
 
             tvTitle.setText(Utils.fromHtml(media.getTitle()));
             ImageUtils.showImage(
-                    HomiApp.self().getApplicationContext(),
+                    context,
                     ivThumb,
                     R.drawable.test_0,
                     new CenterCrop(),
-                    new RoundedCorners(HomiApp.self().getMargin())
+                    new RoundedCorners(margin)
             );
-
-//                tvChannelTitle.setText(Utils.fromHtml(HomiApp.self().getString(video.getChannel().getTitle())));
             tvChannelTitle.setText(Utils.fromHtml(media.getTitle()));
-
             ImageUtils.showImage(
-                    HomiApp.self().getApplicationContext(),
+                    context,
                     ivChannelAvatar,
                     R.drawable.test_8,
                     new CenterCrop(),

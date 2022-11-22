@@ -41,14 +41,8 @@ public class MediaViewModel extends ViewModel {
 
 
 
-    //This method is using Retrofit to get the JSON data from URL
     public void loadMediaList() {
-//
-//
-//        HomiRemoteService api = ApiService.getAPIService();
-//        Call<ApiMediaResponse> call = api.getMediaData();
-
-        Call<ApiResponse> call = mediaRepository.getMedias();
+        Call<ApiResponse> call = mediaRepository.getMediaList();
 
         call.enqueue(new Callback<ApiResponse>() {
             @Override

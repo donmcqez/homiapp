@@ -6,5 +6,5 @@ import retrofit2.Call;
 
 public interface MediaRepository {
 //    List<Media> getMedias() throws IOException;
-    Call<ApiResponse> getMedias();
+    Call<ApiResponse> getMediaList();
 }

@@ -88,13 +88,13 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
         private void bind(Media media, int position) {
 
             tvTitle.setText(Utils.fromHtml(media.getTitle()));
-
+            int margin = (int) Utils.dp2px(itemView.getContext(),8);
             ImageUtils.showImage(
-                    HomiApp.self().getApplicationContext(),
+                    itemView.getContext(),
                     ivBanner,
                     media.getBanner(),
                     new CenterCrop(),
-                    new RoundedCorners(HomiApp.self().getMargin())
+                    new RoundedCorners(margin)
             );
 
             tvDescription.setText(Utils.fromHtml(media.getCategory()));
@@ -108,60 +108,6 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
 
         }
     }
-
-
-    /*public static class MediaViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.iv_thumb)
-        ImageView ivThumb;
-        @BindView(R.id.tv_title)
-        TextView tvTitle;
-        @BindView(R.id.iv_channel_avatar)
-        ImageView ivChannelAvatar;
-        @BindView(R.id.tv_channel_title)
-        TextView tvChannelTitle;
-        @BindView(R.id.root_holder_home_video)
-        ConstraintLayout rootHolderHomeVideo;
-
-        private View itemView;
-
-       public MediaViewHolder(View view) {
-            super(view);
-            ButterKnife.bind(this,view);
-            itemView = view;
-        }
-
-        private void bind(Media media,int position) {
-
-            tvTitle.setText(Utils.fromHtml(media.getTitle()));
-
-            ImageUtils.showImage(
-                    HomiApp.self().getApplicationContext(),
-                    ivThumb,
-                    media.getBanner(),
-                    new CenterCrop(),
-                    new RoundedCorners(HomiApp.self().getMargin())
-            );
-
-//                tvChannelTitle.setText(Utils.fromHtml(HomiApp.self().getString(video.getChannel().getTitle())));
-            tvChannelTitle.setText(Utils.fromHtml(media.getCategory()));
-
-            ImageUtils.showImage(
-                    HomiApp.self().getApplicationContext(),
-                    ivChannelAvatar,
-                    media.getBanner(),
-                    new CenterCrop(),
-                    new CircleCrop()
-            );
-
-            itemView.setOnClickListener(view -> {
-                if (mOnItemClickListener != null) {
-                    ViewCompat.setTransitionName(ivChannelAvatar, media.getTitle());
-                    mOnItemClickListener.onItemClick(view, media, position);
-                }
-            });
-
-        }
-    }*/
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;

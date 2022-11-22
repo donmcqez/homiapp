@@ -13,8 +13,6 @@ public class HomiApp extends Application implements Constants {
         return self;
     }
 
-//    private ApiHelper apiHelper;
-
     private int marginThree;
     private int padding;
     private int margin;
@@ -32,9 +30,9 @@ public class HomiApp extends Application implements Constants {
 
 //        apiHelper = new AppApiHelper();
 
-        marginThree = (int) Utils.dp2px(4);
-        padding = (int) Utils.dp2px(16);
-        margin = (int) Utils.dp2px(8);
+        marginThree = (int) Utils.dp2px(self(),4);
+        padding = (int) Utils.dp2px(self(),16);
+        margin = (int) Utils.dp2px(self(),8);
         round = margin;
     }
 

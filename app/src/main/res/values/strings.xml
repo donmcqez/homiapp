@@ -54,4 +54,12 @@
     <string name="channel_title_test_9">Sony Picture • 4 months ago</string>
 
     <string name="trending">Trending</string>
+    <string name="live">Live</string>
+    <string name="recently_viewed">Recently Viewed</string>
+    <string name="new_to_you">New to you</string>
+    <string name="all">All</string>
+    <string name="explore">Explore</string>
+    <string name="send_feedback">SEND FEEDBACK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -8,16 +8,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.tikay.homitest.R;
 
-public class CategoriesFragment extends Fragment {
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.fragment_home,container,false);
+import butterknife.ButterKnife;
 
-    return view;
+public class CategoriesFragment extends Fragment {
+    private NavController navController;
+
+    public CategoriesFragment(){
+        super(R.layout.fragment_categories);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ButterKnife.bind(this, view);
+
+        this.navController = Navigation.findNavController(view);
     }
 }

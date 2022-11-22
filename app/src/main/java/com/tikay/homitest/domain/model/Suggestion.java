@@ -202,6 +202,14 @@ public class Suggestion {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Suggestion)) return false;
+        Suggestion suggestion = (Suggestion) o;
+        return id == suggestion.id;
+    }
+
+    @Override
     public String toString() {
         return "Suggestion{" +
                         "id = '" + id + '\'' +
