@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,10 +57,13 @@ public class SeasonFragment extends Fragment {
     TextView tvSeason;
     @BindView(R.id.chipPlay)
     Chip chipPlay;
+//    @BindView(R.id.chipType)
+//    Chip chipType;
 
     private NavController navController;
 
     private int mediaPosition = 0;
+    private boolean isPremium = false;
 
     private SuggestionAdapter suggestionAdapter;
     private MediaViewModel mediaViewModel;
@@ -97,11 +101,6 @@ public class SeasonFragment extends Fragment {
             SeasonFragmentDirections.ActionSeasonFragmentToEpisodeFragment action =
                     SeasonFragmentDirections.actionSeasonFragmentToEpisodeFragment();
             action.setEpisodeId(suggestion.getId());
-            navController.navigate(action);
-
-//            SeasonFragmentDirections.ActionSeasonFragmentToPlayerFragment action =
-//                    SeasonFragmentDirections.actionSeasonFragmentToPlayerFragment();
-//            action.setSeasonId(mediaPosition);
 //            navController.navigate(action);
 
         });
@@ -120,8 +119,10 @@ public class SeasonFragment extends Fragment {
     }
 
     private void initViews(Media media) {
-        String year = "Release year "+media.getReleased();
-        String views = "Views "+media.getViews();
+        isPremium = media.isPremium();
+        String premiumType = isPremium ? "rent $1" : "play";
+        String year = "Release year " + media.getReleased();
+        String views = "Views " + media.getViews();
         String season = "Season 1";
         tvTitle.setText(media.getTitle());
         tvCategory.setText(media.getCategory());
@@ -130,8 +131,10 @@ public class SeasonFragment extends Fragment {
         tvYear.setText(year);
         tvViews.setText(views);
         tvSeason.setText(season);
+        chipPlay.setText(premiumType);
 
-        int margin = (int) Utils.dp2px(requireActivity(),8);
+        int margin = (int) Utils.dp2px(requireActivity(), 8);
+
         ImageUtils.showImage(
                 requireActivity(),
                 ivBanner,
@@ -143,6 +146,13 @@ public class SeasonFragment extends Fragment {
 
     @OnClick(value = R.id.chipPlay)
     public void onIvPlayClicked() {
+        if (isPremium) {
+            // show signup/login page
+            Toast.makeText(requireContext(), "premium content", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(requireContext(), "free content", Toast.LENGTH_LONG).show();
+            // navigate to player screen
+        }
         SeasonFragmentDirections.ActionSeasonFragmentToPlayerFragment action =
                 SeasonFragmentDirections.actionSeasonFragmentToPlayerFragment();
         action.setSeasonId(mediaPosition);

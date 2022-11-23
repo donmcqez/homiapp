@@ -4,6 +4,7 @@
 <!--    <item android:drawable="@android:color/transparent" />-->
 
 <!--    <item android:drawable="@color/colorRedAlpha" android:state_pressed="true"/>-->
-    <item android:drawable="@color/colorRedAlpha" android:state_selected="true"/>
-    <item android:drawable="@color/item_color_inactive" android:state_focused="true"/>
+    <item android:drawable="@color/orange" android:state_selected="true"/>
+    <item android:drawable="@android:color/transparent" android:state_focused="true"/>
+<!--    <item android:drawable="@color/item_color_inactive" android:state_focused="true"/>-->
 </selector>

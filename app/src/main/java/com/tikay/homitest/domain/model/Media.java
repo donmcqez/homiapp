@@ -143,7 +143,7 @@ public class Media {
 	}
 
 	public Boolean isPremium() {
-		return Objects.equals(premium, "yes");
+		return Objects.equals(premium, "Yes");
 	}
 
 	public String getPremium() {

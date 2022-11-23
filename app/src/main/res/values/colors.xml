@@ -10,6 +10,7 @@
     <color name="gray">#bebebe</color>
 
     <color name="dark_gray">#90464545</color>
+    <color name="dark_background">#99000000</color>
 
 
     <color name="green">#4caf50</color>

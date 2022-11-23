@@ -5,28 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/player"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/background_dark"
-        app:controller_layout_id="@layout/custom_controller"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:player_layout_id="@layout/exo_player_view"
-        app:use_controller="true" />-->
-
-    <!--<VideoView
-        android:id="@+id/videoPlayer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
 
     <ImageView
         android:id="@+id/ivBanner"
@@ -37,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/image_banner" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,41 +49,38 @@
             android:layout_marginBottom="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="All or nothing S1 Ep1"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/cities" />
+            tools:text="All or nothing S1 Ep1" />
 
         <TextView
             android:id="@+id/tvCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="Documentary"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            tools:text="23K views" />
+            tools:text="Documentary" />
 
         <TextView
             android:id="@+id/tvRatingDefault"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="Age Rating: "
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCategory"
-            tools:text="... more" />
+            tools:text="Age Rating: " />
 
         <TextView
             android:id="@+id/tvRating"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="16+"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/tvRatingDefault"
@@ -116,11 +92,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="text description"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvRatingDefault"
-            tools:text="... more" />
+            tools:text="text description" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup1"
@@ -134,30 +109,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="451.5K"
                 android:textStyle="bold"
+                android:text="45K"
                 app:chipBackgroundColor="#9A9898"
-                app:chipIcon="@drawable/ic_thumb_up_black_48dp" />
+                app:chipIcon="@drawable/ic_thumb_up_black_48dp"
+                tools:text="45K"
+                />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/dislikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Dislike"
                 android:textStyle="bold"
                 app:chipBackgroundColor="#9A9898"
+                tools:text="150"
+                android:text="8"
                 app:chipIcon="@drawable/ic_thumb_down_black_48dp" />
+
+            <!--<com.google.android.material.chip.Chip
+                android:id="@+id/chipType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="premium"
+                android:textStyle="bold"
+                app:chipBackgroundColor="@color/orange"
+                app:chipIcon="@drawable/ic_baseline_workspace_premium_24" />-->
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Play"
+                android:text="@string/play"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:chipBackgroundColor="@color/colorRedAlpha"
+                app:chipBackgroundColor="@color/colorRed"
                 app:chipCornerRadius="4dp"
                 app:chipIcon="@drawable/ic_play_grey_48"
                 app:chipIconTint="@color/white"

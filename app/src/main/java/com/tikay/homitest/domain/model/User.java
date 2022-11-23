@@ -119,6 +119,4 @@ public class User implements Parcelable {
         dest.writeString(this.password);
     }
 
-
-
 }

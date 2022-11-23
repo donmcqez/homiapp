@@ -7,25 +7,50 @@
     android:background="@android:color/white">
 
     <androidx.media3.ui.PlayerView
-       android:id="@+id/video_view"
-       android:layout_width="0dp"
-       android:layout_height="0dp"
-       app:layout_constraintDimensionRatio="16:10"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"/>
-    <!--<com.google.android.exoplayer2.ui.PlayerView
-       android:id="@+id/player"
-       android:layout_width="0dp"
-       android:layout_height="0dp"
-       android:background="@android:color/background_dark"
-       app:controller_layout_id="@layout/custom_controller"
-       app:layout_constraintDimensionRatio="16:9"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:player_layout_id="@layout/exo_player_view"
-       app:use_controller="true" />-->
+        android:id="@+id/video_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="16:10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cipLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/video_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clSuggestion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/dark_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/video_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_suggestion"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_suggestion" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ImageView
@@ -36,8 +61,7 @@
         app:layout_constraintDimensionRatio="16:10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clLabel"
@@ -75,9 +99,9 @@
             android:id="@+id/tvEpisodeIndex"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxLines="1"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
+            android:maxLines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

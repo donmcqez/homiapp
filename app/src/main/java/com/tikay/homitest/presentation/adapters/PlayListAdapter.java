@@ -1,7 +1,6 @@
 package com.tikay.homitest.presentation.adapters;
 
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
@@ -18,24 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.tikay.homitest.HomiApp;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Episode;
-import com.tikay.homitest.domain.model.Media;
 import com.tikay.homitest.presentation.utils.Utils;
 import com.tikay.homitest.presentation.utils.images.ImageUtils;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PlayListAdapter extends ListAdapter<Episode, PlayListAdapter.PlayListViewHolder> {
-    private int selectedPos = RecyclerView.NO_POSITION;
+//    private int selectedPos = RecyclerView.NO_POSITION;
+    private int selectedPosition = 0;
 
     public PlayListAdapter() {
         super(DIFF_CALLBACK);
@@ -56,7 +47,7 @@ public class PlayListAdapter extends ListAdapter<Episode, PlayListAdapter.PlayLi
     @Override
     public void onBindViewHolder(@NonNull PlayListViewHolder holder, int position) {
         holder.bind(getItem(position), position);
-        holder.itemView.setSelected(selectedPos == position);
+        holder.itemView.setSelected(selectedPosition == position);
     }
 
 
@@ -107,14 +98,20 @@ public class PlayListAdapter extends ListAdapter<Episode, PlayListAdapter.PlayLi
                     ViewCompat.setTransitionName(ivBanner, episode.getTitle());
                     mOnItemClickListener.onItemClick(view, episode, position);
 
-                    notifyItemChanged(selectedPos);
-                    selectedPos = getBindingAdapterPosition();
-                    notifyItemChanged(selectedPos);
+                    notifyItemChanged(selectedPosition);
+                    selectedPosition = getBindingAdapterPosition();
+                    notifyItemChanged(selectedPosition);
                 }
             });
 
         }
 
+    }
+
+    public void setSelectedPosition(int position){
+        notifyItemChanged(selectedPosition);
+        selectedPosition = position;
+        notifyItemChanged(selectedPosition);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {

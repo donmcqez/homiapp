@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private void setUpRecyclerView() {
         mediaAdapter = new MediaAdapter();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(mediaAdapter);
 
         srHome.setOnRefreshListener(() -> srHome.post(() -> {
@@ -75,8 +75,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 //            navController.navigate(action);
 
             Bundle bundle = new Bundle();
-            bundle.putInt("position",position);
-            navController.navigate(R.id.seasonFragment,bundle);
+            bundle.putInt("position", position);
+            navController.navigate(R.id.seasonFragment, bundle);
 
         });
     }

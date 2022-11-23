@@ -62,4 +62,7 @@
     <string name="send_feedback">SEND FEEDBACK</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dislike">Dislike</string>
+    <string name="play">Play</string>
+    <string name="image_banner">image_banner</string>
 </resources>

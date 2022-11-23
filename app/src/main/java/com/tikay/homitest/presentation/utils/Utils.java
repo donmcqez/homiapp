@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.RequiresApi;
@@ -214,4 +215,10 @@ public class Utils {
         return differenceInMonths + " month ago";
     }
 
+    public static void showShortToast(Context context, String message){
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+    public static void showLongToast(Context context, String message){
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
 }

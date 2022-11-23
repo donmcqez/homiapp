@@ -36,8 +36,6 @@ public class HomeActivity extends AppCompatActivity{
     @BindView(R.id.bottomNavigationView)
     BottomNavigationView bottomNavigationView;
 
-    private MediaViewModel mediaViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,21 +51,12 @@ public class HomeActivity extends AppCompatActivity{
 //        NavController navController = Navigation.findNavController(this,R.id.navHostFragment);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
-        mediaViewModel = new ViewModelProvider(this).get(MediaViewModel.class);
+        MediaViewModel mediaViewModel = new ViewModelProvider(this).get(MediaViewModel.class);
         HomiRemoteService homiRemoteService = ApiService.getAPIService();
         MediaRepository mediaRepository = new MediaRepositoryImpl(homiRemoteService);
         mediaViewModel.setMediaRepository(mediaRepository);
 
         navController.addOnDestinationChangedListener((navController1, destination, bundle) -> {
-//            switch (destination.getId()){
-//                case R.id.homeFragment:
-//                case R.id.categoriesFragment:
-//                case R.id.menuFragment:{
-//                    bottomNavigationView.setVisibility(View.VISIBLE);
-//                }
-//                case R.id.seasonFragment:
-////                default:bottomNavigationView.setVisibility(View.GONE);
-//            }
             if (destination.getId() == R.id.homeFragment||
                     destination.getId() == R.id.categoriesFragment||
                     destination.getId() == R.id.menuFragment) {
