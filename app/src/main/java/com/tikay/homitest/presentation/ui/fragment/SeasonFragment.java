@@ -120,7 +120,7 @@ public class SeasonFragment extends Fragment {
     }
 
     private void observeSuggestionData() {
-        mainViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
+        mainViewModel.observeSeriesData().observe(getViewLifecycleOwner(), mediaList -> {
             initViews(mediaList.get(seriesId));
 
             List<Suggestion> suggestionList = new ArrayList<>();

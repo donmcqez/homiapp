@@ -6,10 +6,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.tikay.homitest.data.repository.MediaRepositoryImpl;
 import com.tikay.homitest.domain.model.ApiResponse;
 import com.tikay.homitest.domain.model.Series;
-import com.tikay.homitest.domain.repository.MediaRepository;
+import com.tikay.homitest.domain.usecase.series.GetAllSeriesUseCase;
 
 import java.util.List;
 
@@ -18,37 +17,32 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainViewModel extends ViewModel {
-    MediaRepository mediaRepository;;
+    GetAllSeriesUseCase getAllSeriesUseCase;
 
-    //this is the data that we will fetch asynchronously
-    private MutableLiveData<List<Series>> mediaListLiveData;
+    private MutableLiveData<List<Series>> seriesLiveData;
 
     public MainViewModel() {
-        mediaRepository = new MediaRepositoryImpl();
+        getAllSeriesUseCase = new  GetAllSeriesUseCase();
     }
 
-    //we will call this method to get the data
-    public LiveData<List<Series>> getMediaData() {
-        //if the list is null
-        if (mediaListLiveData == null) {
-            mediaListLiveData = new MutableLiveData<>();
-            //we will load it asynchronously from server in this method
-            loadMediaList();
+    public LiveData<List<Series>> observeSeriesData() {
+        if (seriesLiveData == null) {
+            seriesLiveData = new MutableLiveData<>();
+            updateSeriesState();
         }
 
-        //finally we will return the list
-        return mediaListLiveData;
+        return seriesLiveData;
     }
 
-    public void loadMediaList() {
-        Call<ApiResponse> call = mediaRepository.getMediaList();
+    public void updateSeriesState() {
+        Call<ApiResponse> call = getAllSeriesUseCase.getAllSeries();
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     ApiResponse mediaResponse = response.body();
                     if (mediaResponse != null) {
-                        mediaListLiveData.setValue(mediaResponse.getMediaDataList());
+                        seriesLiveData.setValue(mediaResponse.getMediaDataList());
                         Log.d("MainViewModel", "message: " + mediaResponse.getMessage());
                         Log.d("MainViewModel", "status : " + mediaResponse.isStatus());
                         Log.d("MainViewModel", "data   : " + mediaResponse.getMediaDataList());

@@ -84,14 +84,14 @@ public class SeriesFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     private void observeSeriesData() {
         srHome.setRefreshing(true);
-        mainViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
+        mainViewModel.observeSeriesData().observe(getViewLifecycleOwner(), mediaList -> {
             seriesAdapter.submitList(mediaList);
             srHome.setRefreshing(false);
         });
     }
 
     private void fetchData() {
-        mainViewModel.loadMediaList();
+        mainViewModel.updateSeriesState();
     }
 
     @Override

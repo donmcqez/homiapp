@@ -129,18 +129,3 @@ public class PlayListAdapter extends ListAdapter<Episode, PlayListAdapter.PlayLi
     };
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

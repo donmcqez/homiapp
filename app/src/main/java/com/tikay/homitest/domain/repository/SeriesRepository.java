@@ -4,7 +4,7 @@ import com.tikay.homitest.domain.model.ApiResponse;
 
 import retrofit2.Call;
 
-public interface MediaRepository {
+public interface SeriesRepository {
 //    List<Series> getMedias() throws IOException;
-    Call<ApiResponse> getMediaList();
+    Call<ApiResponse> getAllSeries();
 }

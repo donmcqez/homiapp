@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/test_0" />
+        tools:src="@drawable/homi_placeholder_lans" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -40,7 +40,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
-        tools:src="@drawable/test_1" />
+        tools:src="@drawable/homi_placeholder_lans" />
 
     <TextView
         android:id="@+id/tv_channel_title"

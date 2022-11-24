@@ -1,5 +1,6 @@
 package com.tikay.homitest.presentation.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class SeriesAdapter extends ListAdapter<Series, SeriesAdapter.SeriesViewH
     public SeriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
 //                .inflate(R.layout.holder_home_video, parent, false);
-                .inflate(R.layout.row_home_feed, parent, false);
+                .inflate(R.layout.holder_series, parent, false);
 
 //        view = itemView;
         return new SeriesViewHolder(itemView);
@@ -65,7 +66,7 @@ public class SeriesAdapter extends ListAdapter<Series, SeriesAdapter.SeriesViewH
         }
     };
 
-
+    @SuppressLint("NonConstantResourceId")
     public static class SeriesViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tvTitle)
         TextView tvTitle;
@@ -112,18 +113,3 @@ public class SeriesAdapter extends ListAdapter<Series, SeriesAdapter.SeriesViewH
         void onItemClick(View view, Series series, int position);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

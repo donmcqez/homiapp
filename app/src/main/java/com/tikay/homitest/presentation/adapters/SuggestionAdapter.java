@@ -115,18 +115,3 @@ public class SuggestionAdapter extends ListAdapter<Suggestion, SuggestionAdapter
         void onItemClick(View view, Suggestion suggestion, int position);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

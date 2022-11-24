@@ -6,53 +6,16 @@ import com.tikay.homitest.presentation.utils.Utils;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-public class HomiApp extends Application implements Constants {
-    private static HomiApp self;
-
-    public static HomiApp self() {
-        return self;
-    }
-
-    private int marginThree;
-    private int padding;
-    private int margin;
-    private int round;
-
+public class HomiApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        self = this;
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/Roboto-Medium.ttf")
                 .setFontAttrId(uk.co.chrisjenx.calligraphy.R.attr.fontPath)
                 .build());
 
-//        apiHelper = new AppApiHelper();
-
-        marginThree = (int) Utils.dp2px(self(),4);
-        padding = (int) Utils.dp2px(self(),16);
-        margin = (int) Utils.dp2px(self(),8);
-        round = margin;
-    }
-
-//    public ApiHelper getApiHelper() {
-//        return apiHelper;
-//    }
-
-    public int getMarginThree() {
-        return marginThree;
-    }
-
-    public int getPadding() {
-        return padding;
-    }
-
-    public int getMargin() {
-        return margin;
-    }
-
-    public int getRound() {
-        return round;
     }
 }
+

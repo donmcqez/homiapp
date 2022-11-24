@@ -54,7 +54,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             ImageUtils.loadImage(
                     context,
                     ivThumb,
-                    R.drawable.test_0,
+                    R.drawable.homi_placeholder_lans,
                     new CenterCrop(),
                     new RoundedCorners(margin)
             );
@@ -62,7 +62,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             ImageUtils.loadImage(
                     context,
                     ivChannelAvatar,
-                    R.drawable.test_8,
+                    R.drawable.homi_placeholder_lans,
                     new CenterCrop(),
                     new CircleCrop()
             );
@@ -105,19 +105,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
         holder.itemView.setOnClickListener(v -> {
             Log.d(TAG, "onBindViewHolder: ITEM CLICKED ===============>");
-            // get the user unique key
-//            int userId = user.getId();
-//            Intent intent = new Intent(context, ChatActivity.class);
-//            intent.putExtra(Config.USER_ID, userId);
-//            intent.putExtra("name", user.getFull_name());
-//            intent.putExtra(Config.LAST_SEEN, user.getLast_seen());
-//
-//
-//            View sharedView = holder.civThumbnail;
-//            String transitionName = context.getString(R.string.transition_poster);
-//            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation((AppCompatActivity)context, sharedView, transitionName);
-//            context.startActivity(intent, activityOptions.toBundle());
-//            ((AppCompatActivity) context).overridePendingTransition(0,0);
         });
     }
 
@@ -161,5 +148,3 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         void onItemClick(View view, Series series, int pos);
     }
 }
-
-

@@ -48,8 +48,8 @@ public class HomeActivity extends AppCompatActivity{
         MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        mainViewModel.getMediaData();
-        userViewModel.getUserData();
+        mainViewModel.observeSeriesData();
+        userViewModel.observeUser();
 
         navController.addOnDestinationChangedListener((navController1, destination, bundle) -> {
             if (destination.getId() == R.id.seriesFragment ||

@@ -77,7 +77,7 @@ public class Utils {
     }
 
     public static float dpFromRes(Context context,@DimenRes int res) {
-        return context.getResources().getDimension(res) / HomiApp.self().getResources().getDisplayMetrics().density;
+        return context.getResources().getDimension(res) / context.getResources().getDisplayMetrics().density;
     }
 
     public static float dp2px(Context context,float dp) {
@@ -85,8 +85,8 @@ public class Utils {
         return dp * scale + 0.5f;
     }
 
-    public static float sp2px(float sp) {
-        final float scale = HomiApp.self().getResources().getDisplayMetrics().scaledDensity;
+    public static float sp2px(Context context,float sp) {
+        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
         return sp * scale;
     }
 
