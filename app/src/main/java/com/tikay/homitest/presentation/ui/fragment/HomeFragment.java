@@ -16,7 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tikay.homitest.R;
 import com.tikay.homitest.presentation.adapters.MediaAdapter;
-import com.tikay.homitest.presentation.veiwmodel.MediaViewModel;
+import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private NavController navController;
 
     private MediaAdapter mediaAdapter;
-    private MediaViewModel mediaViewModel;
+    private MainViewModel mainViewModel;
 
     public HomeFragment() {
         super(R.layout.fragment_home);
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private void initViewModel() {
         // I'm using requireActivity() in order to share the same viewModel with host activity
-        mediaViewModel = new ViewModelProvider(requireActivity()).get(MediaViewModel.class);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     }
 
     private void setUpRecyclerView() {
@@ -83,14 +83,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private void observeSeriesData() {
         srHome.setRefreshing(true);
-        mediaViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
+        mainViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
             mediaAdapter.submitList(mediaList);
             srHome.setRefreshing(false);
         });
     }
 
     private void fetchData() {
-        mediaViewModel.loadMediaList();
+        mainViewModel.loadMediaList();
     }
 
     @Override

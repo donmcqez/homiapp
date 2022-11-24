@@ -1,8 +1,10 @@
 plugins {
-    id 'com.android.application'
-    id 'androidx.navigation.safeargs'
-    id 'org.jetbrains.kotlin.android'
+    id "com.android.application"
+    id "androidx.navigation.safeargs"
+    id "org.jetbrains.kotlin.android"
 }
+
+//apply plugin: "androidx.navigation.safeargs"
 
 android {
     namespace 'com.tikay.homitest'
@@ -32,7 +34,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+//        viewBinding true
     }
 }
 
@@ -40,28 +42,28 @@ dependencies {
 
     implementation 'androidx.annotation:annotation:1.5.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
     implementation 'androidx.core:core:1.9.0'
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.preference:preference:1.2.0'
 
     // Navigation Components
-    def nav_version = "2.5.3"
+    def nav_version = "2.6.0-alpha04"
+//    def nav_version = "2.5.3"
     implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+//    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+//    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
-
     //
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-runtime:2.5.1'

@@ -6,23 +6,18 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowInsetsControllerCompat;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tikay.homitest.R;
-import com.tikay.homitest.data.remote.service.ApiService;
-import com.tikay.homitest.data.remote.service.HomiRemoteService;
-import com.tikay.homitest.data.repository.MediaRepositoryImpl;
-import com.tikay.homitest.domain.repository.MediaRepository;
-import com.tikay.homitest.presentation.veiwmodel.MediaViewModel;
+import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
+import com.tikay.homitest.presentation.veiwmodel.UserViewModel;
 
 import java.util.Objects;
 
@@ -51,10 +46,11 @@ public class HomeActivity extends AppCompatActivity{
 //        NavController navController = Navigation.findNavController(this,R.id.navHostFragment);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
-        MediaViewModel mediaViewModel = new ViewModelProvider(this).get(MediaViewModel.class);
-        HomiRemoteService homiRemoteService = ApiService.getAPIService();
-        MediaRepository mediaRepository = new MediaRepositoryImpl(homiRemoteService);
-        mediaViewModel.setMediaRepository(mediaRepository);
+        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        mainViewModel.getMediaData();
+        userViewModel.getUserData();
 
         navController.addOnDestinationChangedListener((navController1, destination, bundle) -> {
             if (destination.getId() == R.id.homeFragment||

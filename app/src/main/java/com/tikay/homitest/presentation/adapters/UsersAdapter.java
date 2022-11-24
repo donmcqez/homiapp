@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.tikay.homitest.HomiApp;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Media;
 import com.tikay.homitest.presentation.utils.Utils;
@@ -52,7 +51,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             int margin = (int) Utils.dp2px(context,8);
 
             tvTitle.setText(Utils.fromHtml(media.getTitle()));
-            ImageUtils.showImage(
+            ImageUtils.loadImage(
                     context,
                     ivThumb,
                     R.drawable.test_0,
@@ -60,7 +59,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
                     new RoundedCorners(margin)
             );
             tvChannelTitle.setText(Utils.fromHtml(media.getTitle()));
-            ImageUtils.showImage(
+            ImageUtils.loadImage(
                     context,
                     ivChannelAvatar,
                     R.drawable.test_8,

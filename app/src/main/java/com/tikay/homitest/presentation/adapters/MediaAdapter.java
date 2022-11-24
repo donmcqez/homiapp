@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.tikay.homitest.HomiApp;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Media;
 import com.tikay.homitest.presentation.utils.Utils;
@@ -89,12 +88,10 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
 
             tvTitle.setText(Utils.fromHtml(media.getTitle()));
             int margin = (int) Utils.dp2px(itemView.getContext(),8);
-            ImageUtils.showImage(
+            ImageUtils.loadImage(
                     itemView.getContext(),
                     ivBanner,
-                    media.getBanner(),
-                    new CenterCrop(),
-                    new RoundedCorners(margin)
+                    media.getBanner()
             );
 
             tvDescription.setText(Utils.fromHtml(media.getCategory()));

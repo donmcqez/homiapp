@@ -9,7 +9,6 @@ public class UserDataSource {
     public UserDataSource(){}
 
     public List<User> getUsers() {
-        return FakeUsers.getUsers();
-
+        return MockUsers.getUsers();
     }
 }

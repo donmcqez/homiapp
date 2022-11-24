@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@color/green"
+        app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="4dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="@id/glMiddle"
@@ -46,21 +46,23 @@
                     android:id="@+id/tvSource"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:text="source"
+                    android:text="Homi"
                     android:textColor="@color/white"
-                    android:textSize="8sp"
+                    android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="source" />
 
                 <TextView
                     android:id="@+id/tvSource2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:text="desc"
+                    android:text="series"
                     android:textColor="@color/white"
-                    android:textSize="8sp"
+                    android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSource" />
+                    app:layout_constraintTop_toBottomOf="@id/tvSource"
+                    tools:text="desc" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -79,35 +81,37 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="3"
-            android:text="TITLE"
+            android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TITLE" />
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
             android:ellipsize="end"
-            android:maxLines="5"
-            android:text="DESCRIPTION"
-            android:textColor="@color/black"
+            android:maxLines="1"
+            android:textColor="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="DESCRIPTION" />
 
         <TextView
             android:id="@+id/tvPublishedAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PUBLISHED AT"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+            tools:text="PUBLISHED AT" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

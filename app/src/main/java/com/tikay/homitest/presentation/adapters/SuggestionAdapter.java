@@ -16,9 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.tikay.homitest.HomiApp;
 import com.tikay.homitest.R;
-import com.tikay.homitest.domain.model.Media;
 import com.tikay.homitest.domain.model.Suggestion;
 import com.tikay.homitest.presentation.utils.Utils;
 import com.tikay.homitest.presentation.utils.images.ImageUtils;
@@ -91,12 +89,10 @@ public class SuggestionAdapter extends ListAdapter<Suggestion, SuggestionAdapter
             int margin = (int) Utils.dp2px(context,8);
             tvTitle.setText(Utils.fromHtml(suggestion.getTitle()));
 
-            ImageUtils.showImage(
+            ImageUtils.loadImage(
                     context,
                     ivBanner,
-                    suggestion.getBanner(),
-                    new CenterCrop(),
-                    new RoundedCorners(margin)
+                    suggestion.getBanner()
             );
 
             tvDescription.setText(Utils.fromHtml(suggestion.getCategory()));

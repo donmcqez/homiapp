@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/homi_placeholder_lans"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipUpgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Upgrade Account"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:chipBackgroundColor="@color/purple"
+        app:chipCornerRadius="16dp"
+        app:chipEndPadding="16dp"
+        app:chipIcon="@drawable/ic_baseline_workspace_premium_24"
+        app:chipIconTint="@color/white"
+        app:chipStartPadding="16dp"
+        app:chipStrokeColor="#777676"
+        app:chipStrokeWidth="0.2dp"
+        app:layout_constraintBottom_toTopOf="@id/chipDeleteAuth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipDeleteAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Sign Out"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:chipBackgroundColor="@color/colorRed"
+        app:chipCornerRadius="16dp"
+        app:chipEndPadding="16dp"
+        app:chipIcon="@drawable/ic_baseline_logout_24"
+        app:chipIconTint="@color/white"
+        app:chipStartPadding="16dp"
+        app:chipStrokeColor="#777676"
+        app:chipStrokeWidth="0.2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipUpgrade" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

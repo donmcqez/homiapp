@@ -20,13 +20,12 @@ import com.tikay.homitest.data.repository.MediaRepositoryImpl;
 import com.tikay.homitest.domain.model.Media;
 import com.tikay.homitest.domain.repository.MediaRepository;
 import com.tikay.homitest.presentation.adapters.MediaAdapter;
-import com.tikay.homitest.presentation.veiwmodel.MediaViewModel;
+import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private MediaAdapter mediaAdapter;
 
     //    private List<Media> mediaList = new ArrayList<>();
-    private MediaViewModel mediaViewModel;
+    private MainViewModel mainViewModel;
 
     private float ratio;
 
@@ -65,10 +64,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 //        ImageUtils.showImage(HomiApp.self().getApplicationContext(), ivAvatar, R.drawable.test_0, new CenterCrop(), new CircleCrop());
 
-        mediaViewModel = new ViewModelProvider(this).get(MediaViewModel.class);
-        HomiRemoteService homiRemoteService = ApiService.getAPIService();
-        MediaRepository mediaRepository = new MediaRepositoryImpl(homiRemoteService);
-        mediaViewModel.setMediaRepository(mediaRepository);
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+//        HomiRemoteService homiRemoteService = ApiService.getAPIService();
+//        MediaRepository mediaRepository = new MediaRepositoryImpl(homiRemoteService);
+//        mainViewModel.setRepositories(mediaRepository);
 
 //        feeds = new ArrayList<>();
 //        trending = new ArrayList<>();
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 //        dragFrame.setTopFragment(getSupportFragmentManager(), PlayFragment.newInstance());
 //        dragFrame.setOnDragListener(this);
 //        dragFrame.close();
-        mediaViewModel.getMediaData().observe(this, new Observer<List<Media>>() {
+        mainViewModel.getMediaData().observe(this, new Observer<List<Media>>() {
             @Override
             public void onChanged(List<Media> mediaList) {
                 Log.d("MainActivity", "data   : " + mediaList);
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     void fetchData() {
 //        homePresenter.getHomeVideo();
-        mediaViewModel.loadMediaList();
+        mainViewModel.loadMediaList();
     }
 
 }

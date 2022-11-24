@@ -15,7 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".presentation.ui.activity.SplashActivity"
             android:exported="true"
@@ -30,19 +37,18 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <activity android:name=".presentation.ui.activity.MainActivity"
+        <activity
+            android:name=".presentation.ui.activity.MainActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".presentation.ui.activity.HomeActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".presentation.ui.activity.HomeActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".presentation.ui.activity.PlayerActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".presentation.ui.activity.PlayerActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
-
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

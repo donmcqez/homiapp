@@ -78,19 +78,13 @@ public class PlayListAdapter extends ListAdapter<Episode, PlayListAdapter.PlayLi
         private void bind(Episode episode, int position) {
             Context context = itemView.getContext();
             int margin = (int) Utils.dp2px(context, 8);
-//            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//                String publishedAt = convert(episode.getCreatedAt());
-//                tvPublishedAt.setText(publishedAt);
-//            }
             String publishedAt = Utils.getDateTimeFromString(episode.getCreatedAt());
             tvPublishedAt.setText(publishedAt);
             tvTitle.setText(Utils.fromHtml(episode.getTitle()));
-            ImageUtils.showImage(
+            ImageUtils.loadImage(
                     context,
                     ivBanner,
-                    episode.getBanner(),
-                    new CenterCrop(),
-                    new RoundedCorners(margin)
+                    episode.getBanner()
             );
             tvDescription.setText(Utils.fromHtml(episode.getStatus()));
             itemView.setOnClickListener(view -> {

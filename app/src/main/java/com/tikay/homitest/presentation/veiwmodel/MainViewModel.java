@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.tikay.homitest.data.repository.MediaRepositoryImpl;
 import com.tikay.homitest.domain.model.ApiResponse;
 import com.tikay.homitest.domain.model.Media;
 import com.tikay.homitest.domain.repository.MediaRepository;
@@ -16,14 +17,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MediaViewModel extends ViewModel {
-    MediaRepository mediaRepository;
+public class MainViewModel extends ViewModel {
+    MediaRepository mediaRepository;;
 
     //this is the data that we will fetch asynchronously
     private MutableLiveData<List<Media>> mediaListLiveData;
 
-    public void setMediaRepository(MediaRepository mediaRepository){
-        this.mediaRepository = mediaRepository;
+    public MainViewModel() {
+        mediaRepository = new MediaRepositoryImpl();
     }
 
     //we will call this method to get the data
@@ -39,66 +40,32 @@ public class MediaViewModel extends ViewModel {
         return mediaListLiveData;
     }
 
-
-
     public void loadMediaList() {
         Call<ApiResponse> call = mediaRepository.getMediaList();
-
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     ApiResponse mediaResponse = response.body();
                     if (mediaResponse != null) {
                         mediaListLiveData.setValue(mediaResponse.getMediaDataList());
-                        Log.d("MediaViewModel", "message: " + mediaResponse.getMessage());
-                        Log.d("MediaViewModel", "status : " + mediaResponse.isStatus());
-                        Log.d("MediaViewModel", "data   : " + mediaResponse.getMediaDataList());
+                        Log.d("MainViewModel", "message: " + mediaResponse.getMessage());
+                        Log.d("MainViewModel", "status : " + mediaResponse.isStatus());
+                        Log.d("MainViewModel", "data   : " + mediaResponse.getMediaDataList());
                     }
-                }else {
-                    Log.d("MediaViewModel", " =========> RESPONSE UNSUCCESSFUL ");
+                } else {
+                    Log.d("MainViewModel", " =========> RESPONSE UNSUCCESSFUL ");
                 }
 
             }
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Log.e("MediaViewModel","ERROR: ======>  "+ t.getLocalizedMessage());
+                Log.e("MainViewModel", "ERROR: ======>  " + t.getLocalizedMessage());
             }
 
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

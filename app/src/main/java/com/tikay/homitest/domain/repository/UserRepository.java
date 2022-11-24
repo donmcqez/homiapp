@@ -5,6 +5,9 @@ import com.tikay.homitest.domain.model.User;
 import java.util.List;
 
 public interface UserRepository {
-
-    public List<User> getUsers();
+    List<User> getUsers();
+    User getUser();
+    void saveUser(User user);
+    void updateUser(boolean isPremium);
+    void signOut();
 }

@@ -5,21 +5,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.OptIn;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.media3.common.AudioAttributes;
 import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
+import androidx.media3.common.MimeTypes;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
 import androidx.media3.common.util.Util;
 import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.exoplayer.trackselection.DefaultTrackSelector;
 import androidx.media3.ui.PlayerView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -28,7 +32,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Episode;
 import com.tikay.homitest.domain.model.Suggestion;
@@ -36,7 +39,7 @@ import com.tikay.homitest.presentation.adapters.PlayListAdapter;
 import com.tikay.homitest.presentation.adapters.SuggestionAdapter;
 import com.tikay.homitest.presentation.utils.Utils;
 import com.tikay.homitest.presentation.utils.images.ImageUtils;
-import com.tikay.homitest.presentation.veiwmodel.MediaViewModel;
+import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +66,8 @@ public class PlayerFragment extends Fragment {
     ImageView ivBanner;
     @BindView(R.id.video_view)
     PlayerView playerView;
-    @BindView(R.id.cipLoading)
-    CircularProgressIndicator circularProgressIndicator;
+    @BindView(R.id.pbLoading)
+    ProgressBar progressBar;
 
     @BindView(R.id.tvEpisodeIndex)
     TextView tvEpisodeIndex;
@@ -85,7 +88,7 @@ public class PlayerFragment extends Fragment {
     private List<Suggestion> suggestionList;
     private PlayListAdapter playListAdapter;
     private SuggestionAdapter suggestionAdapter;
-    private MediaViewModel mediaViewModel;
+    private MainViewModel mainViewModel;
 
 
     @Override
@@ -101,11 +104,12 @@ public class PlayerFragment extends Fragment {
         initViewModel();
         setUpRecyclerView();
         observeData();
+
     }
 
     private void initViewModel() {
 // I'm using requireActivity() in order to share the same viewModel with host activity
-        mediaViewModel = new ViewModelProvider(requireActivity()).get(MediaViewModel.class);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     }
 
     private void setUpRecyclerView() {
@@ -128,7 +132,7 @@ public class PlayerFragment extends Fragment {
     }
 
     private void observeData() {
-        mediaViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
+        mainViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
             suggestionList = new ArrayList<>();
             suggestionList.addAll(mediaList.get(0).getSuggestions());
             List<Episode> episodeList = mediaList.get(0).getSeasons().getSeason1();
@@ -139,26 +143,15 @@ public class PlayerFragment extends Fragment {
         });
     }
 
-    private void initPlayer() {
-        player = new ExoPlayer.Builder(requireContext()).build();
-        playerView.setPlayer(player);
-        player.setAudioAttributes(AudioAttributes.DEFAULT, true);
-        player.setPlayWhenReady(playWhenReady);
-        player.seekTo(currentItem, playbackPosition);
-    }
-
     private void initViews(Episode episode) {
         String index = episode.getId() + "/" + episodesSize;
         tvTitle.setText(episode.getTitle());
         tvEpisodeIndex.setText(index);
-
         int margin = (int) Utils.dp2px(requireActivity(), 8);
-        ImageUtils.showImage(
+        ImageUtils.loadImage(
                 requireActivity(),
                 ivBanner,
-                episode.getBanner(),
-                new CenterCrop(),
-                new RoundedCorners(margin)
+                episode.getBanner()
         );
     }
 
@@ -213,20 +206,37 @@ public class PlayerFragment extends Fragment {
         }
     }
 
+    @OptIn(markerClass = UnstableApi.class)
+    private void initPlayer() {
+        DefaultTrackSelector trackSelector = new DefaultTrackSelector(requireContext());
+        trackSelector.buildUponParameters().setMaxVideoSizeSd();
+
+        player = new ExoPlayer.Builder(requireContext())
+                .setTrackSelector(trackSelector)
+                .build();
+        player.setAudioAttributes(AudioAttributes.DEFAULT, true);
+        player.setPlayWhenReady(playWhenReady);
+        player.seekTo(currentItem, playbackPosition);
+        playerView.setPlayer(player);
+        player.addListener(playerListener);
+//        player.addAnalyticsListener(new EventLogger());
+    }
+
     private void preparePlayer(List<Episode> episodeList) {
         List<MediaItem> mediaItemList = new ArrayList<>();
         for (Episode episode : episodeList) {
-            MediaItem mediaItem = MediaItem.fromUri(episode.getMovie());
-//            MediaItem mediaItem = new MediaItem.Builder().setUri(episode.getMovie())
-//                    .setMediaId(episode.getTitle())
-//                    .setTag(episode)
-//                    .build();
+//            MediaItem mediaItem = MediaItem.fromUri(episode.getMovie());
+            MediaItem mediaItem = new MediaItem.Builder()
+                    .setUri(episode.getMovie())
+                    .setMimeType(MimeTypes.APPLICATION_MP4)
+                    .setMediaId(episode.getTitle())
+                    .setTag(episode.getId())
+                    .build();
+
             mediaItemList.add(mediaItem);
         }
         player.setMediaItems(mediaItemList);
         player.prepare();
-
-        player.addListener(playerListener);
     }
 
     private void releasePlayer() {
@@ -240,15 +250,6 @@ public class PlayerFragment extends Fragment {
     }
 
     Player.Listener playerListener = new Player.Listener() {
-        @Override
-        public void onEvents(Player player2, Player.Events events) {
-            if (events.contains(Player.EVENT_PLAYBACK_STATE_CHANGED)
-                    || events.contains(Player.EVENT_PLAY_WHEN_READY_CHANGED)) {
-//                uiModule.updateUi(player);
-            }
-
-        }
-
         @Override
         public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
             try {
@@ -271,46 +272,61 @@ public class PlayerFragment extends Fragment {
                 }
                 case Player.STATE_BUFFERING: {
                     Log.e(TAG, "onPlaybackStateChanged: =========> STATE_BUFFERING");
-                    circularProgressIndicator.setVisibility(View.VISIBLE);
-//                    circularProgressIndicator.show();
+//                    progressBar.setVisibility(View.VISIBLE);
                 }
                 case Player.STATE_READY: {
                     ivBanner.setVisibility(View.GONE);
-                    circularProgressIndicator.setVisibility(View.GONE);
+//                    progressBar.setVisibility(View.GONE);
                     Log.e(TAG, "onPlaybackStateChanged: =========> STATE_READY");
                 }
                 case Player.STATE_ENDED: {
                     Log.e(TAG, "onPlaybackStateChanged: =========> STATE_ENDED");
-
                     int currentIndex = player.getCurrentMediaItemIndex();
-                    if (currentIndex == playListAdapter.getItemCount() - 1) {
-                        Log.e(TAG, "onPlaybackStateChanged: =========> PLAYLIST HAS ENDED");
-                        clSuggestion.setVisibility(View.VISIBLE);
-                        // suggestion adapter
-                        suggestionAdapter.submitList(suggestionList);
+
+                    if (currentIndex == player.getMediaItemCount() - 1) {
+                        Log.e(TAG, "onPlaybackStateChanged: =========> LAST ITEM PLAYING");
+                        long duration = player.getDuration();
+                        long currentPosition = player.getCurrentPosition();
+//                        player.getCurrentMediaItem()
+//                        Log.e(TAG, "onPlaybackStateChanged: =========> DURATION: "+duration/1000+"s");
+                        Log.e(TAG, "onPlaybackStateChanged: =========> DURATION: " + duration);
+                        Log.e(TAG, "onPlaybackStateChanged: =========> CURRENT POSITION: " + currentPosition);
+
+                        if (duration > 0 && currentPosition >= duration) {
+//                            clSuggestion.setVisibility(View.GONE);
+                            Log.e(TAG, "onPlaybackStateChanged: =========> SHOW SUGGESTIONS");
+                            suggestionAdapter.submitList(suggestionList);
+                            clSuggestion.setVisibility(View.VISIBLE);
+                        }
+
                     } else {
+                        // reset to gone if previous media item is selected
                         clSuggestion.setVisibility(View.GONE);
                     }
 
                 }
                 default: {
-                    Log.e(TAG, "onPlaybackStateChanged: =========> STATE_ENDED");
+                    Log.e(TAG, "onPlaybackStateChanged: =========> UNKNOWN STATE");
                 }
             }
         }
 
         @Override
         public void onIsLoadingChanged(boolean isLoading) {
-            Log.e(TAG, "onIsLoadingChanged: =========>  " + isLoading);
-
+            Log.e(TAG, "onIsLoadingChanged: =========>  IS_LOADING: " + isLoading);
+            if (isLoading) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
         public void onIsPlayingChanged(boolean isPlaying) {
-            Log.e(TAG, "onIsLoadingChanged: =========>  " + isPlaying);
+            Log.e(TAG, "onIsPlayingChanged: =========>  IS_PLAYING: " + isPlaying);
             if (isPlaying) {
+                progressBar.setVisibility(View.GONE);
                 // Active playback.
             } else {
+                progressBar.setVisibility(View.VISIBLE);
                 // Not playing because playback is paused, ended, suppressed, or the player
                 // is buffering, stopped or failed. Check player.getPlayWhenReady,
                 // player.getPlaybackState, player.getPlaybackSuppressionReason and
@@ -320,22 +336,34 @@ public class PlayerFragment extends Fragment {
 
         @Override
         public void onPlayWhenReadyChanged(boolean playWhenReady, int reason) {
-
+            Log.e(TAG, "onPlayWhenReadyChanged: =========> " + reason);
         }
 
         @Override
         public void onPlaybackSuppressionReasonChanged(int playbackSuppressionReason) {
-
+            Log.e(TAG, "onPlaybackSuppressionReasonChanged: =========> " + playbackSuppressionReason);
         }
 
         @Override
         public void onPlayerError(PlaybackException error) {
-
+            Log.e(TAG, "onPlayerError: =========> ", error);
+//            if (error.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+//                player.seekToDefaultPosition();
+//                player.prepare();
+//                player.play();
+//            }
+//            if (error.errorCode == PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS) {
+//                player.seekTo(player.getCurrentPosition());
+//                player.prepare();
+//                player.play();
+//            }
+            player.prepare();
+            player.play();
         }
 
         @Override
         public void onPlayerErrorChanged(@Nullable PlaybackException error) {
-
+            Log.e(TAG, "onPlayerErrorChanged: =========> ", error);
         }
     };
 }

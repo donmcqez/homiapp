@@ -1,296 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/ivBanner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic"
-        android:contentDescription="@string/image_banner" />
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clDesign"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/glEnd"
-        app:layout_constraintStart_toEndOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/ivBanner">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!--
-        -All or nothing S1 Ep1
-        -All or nothing o Drama
-
-        -age / rating
-
-        -desc
-
-        - emoji/like       emoji/dislike    box(play)
-
-        -Release Year 2022   Views 34  Season 1
-
-        Favourite    Share   Playlist  Download   Comment
-      -->
-        <TextView
-            android:id="@+id/tvTitle"
+        <ImageView
+            android:id="@+id/ivBanner"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/black"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="All or nothing S1 Ep1" />
+            tools:src="@tools:sample/backgrounds/scenic"
+            android:contentDescription="@string/image_banner" />
 
-        <TextView
-            android:id="@+id/tvCategory"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clDesign"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            tools:text="Documentary" />
+            app:layout_constraintEnd_toStartOf="@+id/glEnd"
+            app:layout_constraintStart_toEndOf="@+id/glStart"
+            app:layout_constraintTop_toBottomOf="@+id/ivBanner">
 
-        <TextView
-            android:id="@+id/tvRatingDefault"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCategory"
-            tools:text="Age Rating: " />
+            <!--
+            -All or nothing S1 Ep1
+            -All or nothing o Drama
 
-        <TextView
-            android:id="@+id/tvRating"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tvRatingDefault"
-            app:layout_constraintTop_toTopOf="@id/tvRatingDefault"
-            tools:text="23K views" />
+            -age / rating
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRatingDefault"
-            tools:text="text description" />
+            -desc
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDescription">
+            - emoji/like       emoji/dislike    box(play)
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/likes"
+            -Release Year 2022   Views 34  Season 1
+
+            Favourite    Share   Playlist  Download   Comment
+          -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="All or nothing S1 Ep1" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:text="Documentary" />
+
+            <TextView
+                android:id="@+id/tvRatingDefault"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCategory"
+                tools:text="Age Rating: " />
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/tvRatingDefault"
+                app:layout_constraintTop_toTopOf="@id/tvRatingDefault"
+                tools:text="23K views" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRatingDefault"
+                tools:text="text description" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:text="45K"
-                app:chipBackgroundColor="#9A9898"
-                app:chipIcon="@drawable/ic_thumb_up_black_48dp"
-                tools:text="45K"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/dislikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#9A9898"
-                tools:text="150"
-                android:text="8"
-                app:chipIcon="@drawable/ic_thumb_down_black_48dp" />
-
-            <!--<com.google.android.material.chip.Chip
-                android:id="@+id/chipType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="premium"
-                android:textStyle="bold"
-                app:chipBackgroundColor="@color/orange"
-                app:chipIcon="@drawable/ic_baseline_workspace_premium_24" />-->
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/play"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:chipBackgroundColor="@color/colorRed"
-                app:chipCornerRadius="4dp"
-                app:chipIcon="@drawable/ic_play_grey_48"
-                app:chipIconTint="@color/white"
-                app:chipStrokeColor="#777676"
-                app:chipStrokeWidth="0.2dp" />
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <TextView
-            android:id="@+id/tvYear"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chipGroup1"
-            tools:text="Release Year 2022" />
-
-        <TextView
-            android:id="@+id/tvViews"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintStart_toEndOf="@id/tvYear"
-            app:layout_constraintTop_toBottomOf="@id/chipGroup1"
-            tools:text="Views 105" />
-
-        <TextView
-            android:id="@+id/tvSeason"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintStart_toEndOf="@id/tvViews"
-            app:layout_constraintTop_toBottomOf="@id/chipGroup1"
-            tools:text="Season 1" />
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvYear">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroup"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/likes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:singleSelection="true">
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:text="45K"
+                    app:chipBackgroundColor="#9A9898"
+                    app:chipIcon="@drawable/ic_thumb_up_black_48dp"
+                    tools:text="45K"
+                    />
 
-                    <com.google.android.material.chip.Chip
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/dislikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    app:chipBackgroundColor="#9A9898"
+                    tools:text="150"
+                    android:text="8"
+                    app:chipIcon="@drawable/ic_thumb_down_black_48dp" />
+
+                <!--<com.google.android.material.chip.Chip
+                    android:id="@+id/chipType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="premium"
+                    android:textStyle="bold"
+                    app:chipBackgroundColor="@color/orange"
+                    app:chipIcon="@drawable/ic_baseline_workspace_premium_24" />-->
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/play"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:chipBackgroundColor="@color/colorRed"
+                    app:chipCornerRadius="4dp"
+                    app:chipIcon="@drawable/ic_play_grey_48"
+                    app:chipIconTint="@color/white"
+                    app:chipStrokeColor="#777676"
+                    app:chipStrokeWidth="0.2dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/tvYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chipGroup1"
+                tools:text="Release Year 2022" />
+
+            <TextView
+                android:id="@+id/tvViews"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toEndOf="@id/tvYear"
+                app:layout_constraintTop_toBottomOf="@id/chipGroup1"
+                tools:text="Views 105" />
+
+            <TextView
+                android:id="@+id/tvSeason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toEndOf="@id/tvViews"
+                app:layout_constraintTop_toBottomOf="@id/chipGroup1"
+                tools:text="Season 1" />
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvYear">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Favourite"
-                        android:textStyle="bold"
-                        app:chipIcon="@drawable/ic_favorite"
-                        app:chipIconTint="@color/colorRed"
-                        app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="0.2dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:singleSelection="true">
 
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Share"
-                        android:textStyle="bold"
-                        app:chipIcon="@drawable/ic_share"
-                        app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="0.2dp" />
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Favourite"
+                            android:textStyle="bold"
+                            app:chipIcon="@drawable/ic_favorite"
+                            app:chipIconTint="@color/colorRed"
+                            app:chipStrokeColor="@color/black"
+                            app:chipStrokeWidth="0.2dp" />
 
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Download"
-                        android:textStyle="bold"
-                        app:chipIcon="@drawable/ic_file_download_black_48dp"
-                        app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="0.2dp" />
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Share"
+                            android:textStyle="bold"
+                            app:chipIcon="@drawable/ic_share"
+                            app:chipStrokeColor="@color/black"
+                            app:chipStrokeWidth="0.2dp" />
 
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Comment"
-                        android:textStyle="bold"
-                        app:chipIcon="@drawable/ic_baseline_chat_bubble_outline_24"
-                        app:chipIconTint="@color/black"
-                        app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="0.2dp" />
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Download"
+                            android:textStyle="bold"
+                            app:chipIcon="@drawable/ic_file_download_black_48dp"
+                            app:chipStrokeColor="@color/black"
+                            app:chipStrokeWidth="0.2dp" />
 
-                </com.google.android.material.chip.ChipGroup>
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Comment"
+                            android:textStyle="bold"
+                            app:chipIcon="@drawable/ic_baseline_chat_bubble_outline_24"
+                            app:chipIconTint="@color/black"
+                            app:chipStrokeColor="@color/black"
+                            app:chipStrokeWidth="0.2dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.chip.ChipGroup>
 
-        </HorizontalScrollView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </HorizontalScrollView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvRelated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:text="Related"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintStart_toEndOf="@+id/glStart"
+            app:layout_constraintTop_toBottomOf="@+id/clDesign"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_seasons"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/glEnd"
+            app:layout_constraintStart_toEndOf="@+id/glStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvRelated"
+            tools:listitem="@layout/item_suggestion" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/tvRelated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:text="Related"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toEndOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/clDesign"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_seasons"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/glEnd"
-        app:layout_constraintStart_toEndOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tvRelated"
-        tools:listitem="@layout/item_suggestion" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

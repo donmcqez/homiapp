@@ -8,13 +8,17 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
+import androidx.annotation.IdRes;
 import androidx.annotation.RequiresApi;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.tikay.homitest.HomiApp;
 
 import java.text.DateFormat;
@@ -137,7 +141,7 @@ public class Utils {
 
 //        DateFormat inputDateFormat = new  SimpleDateFormat("yyyy-MM-dd H:mm:ss", Locale.getDefault());
         DateFormat inputDateFormat = new  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
-        DateFormat dateFormat = new  SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+        DateFormat dateFormat = new  SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
 //        DateFormat timeFormat = new  SimpleDateFormat("h:mm a", Locale.getDefault());
 //        DateFormat simpleDateFormat = new  SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         //DateFormat dateFormat2 = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.UK);
@@ -151,8 +155,8 @@ public class Utils {
             //Date date = simpleDateFormat.format(millis);
             //Date now = dateFormat.parse(date);
             Date date = inputDateFormat.parse(inputDate);
-//            dateToReturn  = dateFormat.format(date != null ? date : "null");
-            dateToReturn = date != null ? date.toString() : "";
+            dateToReturn  = dateFormat.format(date != null ? date : "");
+//            dateToReturn = date != null ? date.toString() : "";
             Log.e("TAG", "getDateTimeFromString: ============>  "+dateToReturn );
         } catch (Exception e) {
             e.printStackTrace();
@@ -220,5 +224,25 @@ public class Utils {
     }
     public static void showLongToast(Context context, String message){
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+    public static void showSnackBar(View view, @IdRes int id, String message){
+        Snackbar.make(view.findViewById(id),message,Snackbar.LENGTH_LONG).show();
+    }
+
+    // A placeholder username validation check
+    public static boolean isEmailValid(String username) {
+        if (username == null) {
+            return false;
+        }
+        if (username.contains("@")) {
+            return Patterns.EMAIL_ADDRESS.matcher(username).matches();
+        } else {
+            return !username.trim().isEmpty();
+        }
+    }
+
+    // A placeholder password validation check
+    public static boolean isPasswordValid(String password) {
+        return password != null && password.trim().length() > 5;
     }
 }
