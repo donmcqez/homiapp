@@ -16,7 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.tikay.homitest.R;
-import com.tikay.homitest.domain.model.Media;
+import com.tikay.homitest.domain.model.Series;
 import com.tikay.homitest.presentation.utils.Utils;
 import com.tikay.homitest.presentation.utils.images.ImageUtils;
 
@@ -46,11 +46,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             itemView = view;
         }
 
-        private void bind(Media media) {
+        private void bind(Series series) {
             Context context = itemView.getContext();
             int margin = (int) Utils.dp2px(context,8);
 
-            tvTitle.setText(Utils.fromHtml(media.getTitle()));
+            tvTitle.setText(Utils.fromHtml(series.getTitle()));
             ImageUtils.loadImage(
                     context,
                     ivThumb,
@@ -58,7 +58,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
                     new CenterCrop(),
                     new RoundedCorners(margin)
             );
-            tvChannelTitle.setText(Utils.fromHtml(media.getTitle()));
+            tvChannelTitle.setText(Utils.fromHtml(series.getTitle()));
             ImageUtils.loadImage(
                     context,
                     ivChannelAvatar,
@@ -72,18 +72,18 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
     }
 
     private Context context;
-    private ArrayList<Media> mediaArrayList;
-    private ArrayList<Media> list = null;
-    private ArrayList<Media> tempList;
+    private ArrayList<Series> seriesArrayList;
+    private ArrayList<Series> list = null;
+    private ArrayList<Series> tempList;
     private String TAG = UsersAdapter.class.getSimpleName();
     private int previousPosition = 0;
     private String mName, mPhone, mEmail, user_id, id;
     private View view;
 
 
-    public UsersAdapter(Context context, ArrayList<Media> classList) {
+    public UsersAdapter(Context context, ArrayList<Series> classList) {
         this.context = context;
-        this.mediaArrayList = classList;
+        this.seriesArrayList = classList;
         this.list = classList;
         this.tempList = new ArrayList<>();
         this.tempList.addAll(classList);
@@ -100,7 +100,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
     @Override
     public void onBindViewHolder(@NonNull final UsersViewHolder holder, int position) {
-        Media user = mediaArrayList.get(position);
+        Series user = seriesArrayList.get(position);
         holder.bind(user);
 
         holder.itemView.setOnClickListener(v -> {
@@ -124,7 +124,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
     @Override
     public int getItemCount() {
-        return mediaArrayList.size();
+        return seriesArrayList.size();
     }
 
     @Override
@@ -132,33 +132,33 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         return getItem(position).hashCode();
     }
 
-    private Media getItem(int position){
-        return mediaArrayList.get(position);
+    private Series getItem(int position){
+        return seriesArrayList.get(position);
     }
 
     // Filter method
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        mediaArrayList.clear();
+        seriesArrayList.clear();
         if (charText.length() == 0) {
-            mediaArrayList.addAll(tempList);
+            seriesArrayList.addAll(tempList);
         } else {
-            for (Media media : tempList) {
-                if (media.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    list.add(media);
+            for (Series series : tempList) {
+                if (series.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    list.add(series);
                 }
             }
         }
         notifyDataSetChanged();
     }
 
-    public void setMediaList(ArrayList<Media> mediaList) {
-        this.mediaArrayList = mediaList;
+    public void setMediaList(ArrayList<Series> seriesList) {
+        this.seriesArrayList = seriesList;
         notifyDataSetChanged();
     }
 
     interface OnItemClickListener {
-        void onItemClick(View view, Media media, int pos);
+        void onItemClick(View view, Series series, int pos);
     }
 }
 

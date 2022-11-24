@@ -15,14 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tikay.homitest.R;
-import com.tikay.homitest.presentation.adapters.MediaAdapter;
+import com.tikay.homitest.presentation.adapters.SeriesAdapter;
 import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @SuppressLint("NonConstantResourceId")
-public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class SeriesFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+
+    public SeriesFragment() {
+        super(R.layout.fragment_series);
+    }
+
     @BindView(R.id.rv_home)
     RecyclerView recyclerView;
     @BindView(R.id.sr_home)
@@ -30,12 +35,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private NavController navController;
 
-    private MediaAdapter mediaAdapter;
+    private SeriesAdapter seriesAdapter;
     private MainViewModel mainViewModel;
-
-    public HomeFragment() {
-        super(R.layout.fragment_home);
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -56,17 +57,17 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     private void setUpRecyclerView() {
-        mediaAdapter = new MediaAdapter();
+        seriesAdapter = new SeriesAdapter();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(mediaAdapter);
+        recyclerView.setAdapter(seriesAdapter);
 
         srHome.setOnRefreshListener(() -> srHome.post(() -> {
             srHome.setRefreshing(true);
             fetchData();
         }));
 
-        mediaAdapter.setOnItemClickListener((v, media, position) -> {
+        seriesAdapter.setOnItemClickListener((v, media, position) -> {
 //            HomeFragmentDirections.ActionHomeFragmentToSeasonFragment action =
 //                    HomeFragmentDirections.actionHomeFragmentToSeasonFragment();
 //
@@ -75,7 +76,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 //            navController.navigate(action);
 
             Bundle bundle = new Bundle();
-            bundle.putInt("position", position);
+            bundle.putInt("seriesId", position);
             navController.navigate(R.id.seasonFragment, bundle);
 
         });
@@ -84,7 +85,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private void observeSeriesData() {
         srHome.setRefreshing(true);
         mainViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
-            mediaAdapter.submitList(mediaList);
+            seriesAdapter.submitList(mediaList);
             srHome.setRefreshing(false);
         });
     }

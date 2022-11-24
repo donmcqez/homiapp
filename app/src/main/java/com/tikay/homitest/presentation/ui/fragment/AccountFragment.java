@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.chip.Chip;
@@ -26,12 +27,16 @@ public class AccountFragment extends Fragment {
     }
 
     private static final String TAG = AccountFragment.class.getSimpleName();
-    private int seasonId;
+    private int seasonId = -1;
     private UserViewModel userViewModel;
     private NavController navController;
 
     @BindView(R.id.chipUpgrade)
     Chip chipUpgrade;
+    @BindView(R.id.chipLogin)
+    Chip chipLogin;
+    @BindView(R.id.chipDeleteAuth)
+    Chip chipDeleteAuth;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -41,7 +46,7 @@ public class AccountFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
 //        mediaPosition = SeasonFragmentArgs.fromBundle(getArguments());
-        seasonId = getArguments() != null ? getArguments().getInt("position") : 0;
+        seasonId = getArguments() != null ? getArguments().getInt("seriesId") : 0;
 
         initViewModel();
         observeAuth();
@@ -55,8 +60,15 @@ public class AccountFragment extends Fragment {
     private void observeAuth() {
         userViewModel.observeUser().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
-                if (user.isPremium())
-                    chipUpgrade.setVisibility(View.GONE);
+                if (user.isPremium() && seasonId >= 0)
+                    chipUpgrade.setVisibility(View.INVISIBLE);
+
+                chipLogin.setVisibility(View.INVISIBLE);
+                chipDeleteAuth.setVisibility(View.INVISIBLE);
+            } else {
+                chipUpgrade.setVisibility(View.INVISIBLE);
+                chipDeleteAuth.setVisibility(View.INVISIBLE);
+                chipLogin.setVisibility(View.VISIBLE);
             }
         });
 
@@ -66,15 +78,23 @@ public class AccountFragment extends Fragment {
     public void upgradeAccount() {
         userViewModel.upgradeUser(true);
 
-        AccountFragmentDirections.ActionAccountFragmentToPlayerFragment acttion =
-                AccountFragmentDirections.actionAccountFragmentToPlayerFragment();
-
-        navController.navigate(acttion);
+//        AccountFragmentDirections.ActionAccountFragmentToPlayerFragment action =
+//                AccountFragmentDirections.actionAccountFragmentToPlayerFragment();
+//        navController.navigate(action);
+        navController.popBackStack();
     }
 
-    @OnClick(R.id.chipUpgrade)
+    @OnClick(R.id.chipDeleteAuth)
     public void signOut() {
         userViewModel.signOut();
+
+//        navController.navigate(AccountFragmentDirections.actionAccountFragmentToSeriesFragment());
+//        NavOptions navOptions = new NavOptions.Builder()
+//                .setPopUpTo(R.id.seriesFragment,false)
+//                .build();
+//        navController.navigate(R.id.authFragment,null,navOptions);
+
+        navController.popBackStack();
     }
 
 

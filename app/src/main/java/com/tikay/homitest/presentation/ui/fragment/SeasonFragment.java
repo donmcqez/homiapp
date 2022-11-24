@@ -16,14 +16,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.snackbar.Snackbar;
 import com.tikay.homitest.R;
-import com.tikay.homitest.domain.model.Media;
+import com.tikay.homitest.domain.model.Series;
 import com.tikay.homitest.domain.model.Suggestion;
-import com.tikay.homitest.domain.model.User;
 import com.tikay.homitest.presentation.adapters.SuggestionAdapter;
 import com.tikay.homitest.presentation.utils.images.ImageUtils;
 import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
@@ -65,7 +63,7 @@ public class SeasonFragment extends Fragment {
 
     private NavController navController;
 
-    private int mediaPosition = 0;
+    private int seriesId = -1;
     private boolean isContentPremium = false;
     private boolean isUserPremium = false;
     private boolean isUserAuthenticated = false;
@@ -85,8 +83,7 @@ public class SeasonFragment extends Fragment {
         ButterKnife.bind(this, view);
         navController = Navigation.findNavController(view);
 
-//        mediaPosition = SeasonFragmentArgs.fromBundle(getArguments());
-        mediaPosition = getArguments() != null ? getArguments().getInt("position") : 0;
+        seriesId = getArguments() != null ? getArguments().getInt("seriesId") : 0;
 
         initViewModel();
         checkAuth();
@@ -124,7 +121,7 @@ public class SeasonFragment extends Fragment {
 
     private void observeSuggestionData() {
         mainViewModel.getMediaData().observe(getViewLifecycleOwner(), mediaList -> {
-            initViews(mediaList.get(mediaPosition));
+            initViews(mediaList.get(seriesId));
 
             List<Suggestion> suggestionList = new ArrayList<>();
             suggestionList.addAll(mediaList.get(0).getSuggestions());
@@ -134,16 +131,16 @@ public class SeasonFragment extends Fragment {
         });
     }
 
-    private void initViews(Media media) {
-        isContentPremium = media.isPremium();
+    private void initViews(Series series) {
+        isContentPremium = series.isPremium();
 
-        String year = "Release year " + media.getReleased();
-        String views = "Views " + media.getViews();
+        String year = "Release year " + series.getReleased();
+        String views = "Views " + series.getViews();
         String season = "Season 1";
-        tvTitle.setText(media.getTitle());
-        tvCategory.setText(media.getCategory());
-        tvRating.setText(media.getRating());
-        tvDescription.setText(media.getSynopsis());
+        tvTitle.setText(series.getTitle());
+        tvCategory.setText(series.getCategory());
+        tvRating.setText(series.getRating());
+        tvDescription.setText(series.getSynopsis());
         tvYear.setText(year);
         tvViews.setText(views);
         tvSeason.setText(season);
@@ -167,7 +164,7 @@ public class SeasonFragment extends Fragment {
         ImageUtils.loadImage(
                 requireActivity(),
                 ivBanner,
-                media.getBanner()
+                series.getBanner()
         );
     }
 
@@ -205,23 +202,31 @@ public class SeasonFragment extends Fragment {
 
     private void navigateToAccountScreen() {
 
-        SeasonFragmentDirections.ActionSeasonFragmentToAccountFragment action =
-                SeasonFragmentDirections.actionSeasonFragmentToAccountFragment();
-        action.setSeasonId(mediaPosition);
-        navController.navigate(action);
+//        SeasonFragmentDirections.ActionSeasonFragmentToAccountFragment action =
+//                SeasonFragmentDirections.actionSeasonFragmentToAccountFragment();
+//        action.setSeasonId(seriesId);
+//        navController.navigate(action);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("seriesId", seriesId);
+        navController.navigate(R.id.accountFragment, bundle);
     }
 
     private void navigateToAuthScreen() {
-        SeasonFragmentDirections.ActionSeasonFragmentToAuthFragment action =
-                SeasonFragmentDirections.actionSeasonFragmentToAuthFragment();
-        action.setSeasonId(mediaPosition);
-        navController.navigate(action);
+//        SeasonFragmentDirections.ActionSeasonFragmentToAuthFragment action =
+//                SeasonFragmentDirections.actionSeasonFragmentToAuthFragment();
+//        action.setSeasonId(seriesId);
+//        navController.navigate(action);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("seriesId", seriesId);
+        navController.navigate(R.id.authFragment, bundle);
     }
 
     private void navigateToPlayer(){
         SeasonFragmentDirections.ActionSeasonFragmentToPlayerFragment action =
                 SeasonFragmentDirections.actionSeasonFragmentToPlayerFragment();
-        action.setSeasonId(mediaPosition);
+        action.setSeasonId(seriesId);
         navController.navigate(action);
     }
 

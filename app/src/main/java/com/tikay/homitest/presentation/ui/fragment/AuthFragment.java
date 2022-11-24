@@ -29,11 +29,10 @@ import butterknife.OnClick;
 @SuppressLint("NonConstantResourceId")
 public class AuthFragment extends Fragment {
     private static final String TAG = AuthFragment.class.getSimpleName();
-    private int seasonId;
-    private MainViewModel mainViewModel;
+    private int seriesId = -1;
     private UserViewModel userViewModel;
 
-    public AuthFragment(){
+    public AuthFragment() {
         super(R.layout.fragment_auth);
     }
 
@@ -60,19 +59,18 @@ public class AuthFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
 //        mediaPosition = SeasonFragmentArgs.fromBundle(getArguments());
-        seasonId = getArguments() != null ? getArguments().getInt("position") : 0;
+        seriesId = getArguments() != null ? getArguments().getInt("seriesId") : 0;
 
         initViewModel();
     }
 
     private void initViewModel() {
         // I'm using requireActivity() in order to share the same viewModel with host activity
-        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
     }
 
     @OnClick(R.id.cvLogin)
-    public void login(){
+    public void login() {
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
 
@@ -85,32 +83,26 @@ public class AuthFragment extends Fragment {
             return;
         }
 
-       User user = userViewModel.login(email,password);
+        User user = userViewModel.login(email, password);
         if (user != null) {
             Log.e(TAG, "login: =========> User: " + user);
 
+            if (user.isPremium() && seriesId >= 0) {
+                AuthFragmentDirections.ActionLoginFragmentToPlayerFragment action =
+                        AuthFragmentDirections.actionLoginFragmentToPlayerFragment();
+                navController.navigate(action);
+            }
+//            else {
+////                AccountFragmentDirections.actionAccountFragmentToSeriesFragment();
+//                navController.popBackStack();
+//            }
 
-            AuthFragmentDirections.ActionLoginFragmentToPlayerFragment acttion =
-                    AuthFragmentDirections.actionLoginFragmentToPlayerFragment();
-            navController.navigate(acttion);
+            navController.popBackStack();
         } else {
             Log.e(TAG, "login: =========> AUTHENTICATION FAILED");
             Log.e(TAG, "login: =========> User: " + user);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

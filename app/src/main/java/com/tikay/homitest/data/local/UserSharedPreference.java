@@ -3,8 +3,6 @@ package com.tikay.homitest.data.local;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.preference.PreferenceManager;
-
 import com.tikay.homitest.domain.model.User;
 
 public class UserSharedPreference {
@@ -49,7 +47,6 @@ public class UserSharedPreference {
                 sharedPreferences.getString(KEY_USER_PHONE, ""),
                 sharedPreferences.getString(KEY_USER_PASSWORD, ""),
                 sharedPreferences.getBoolean(KEY_USER_IS_PREMIUM, false)
-
         );
         if (user.getId() > 0)
             return user;

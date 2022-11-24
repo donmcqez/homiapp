@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.tikay.homitest.data.repository.MediaRepositoryImpl;
 import com.tikay.homitest.domain.model.ApiResponse;
-import com.tikay.homitest.domain.model.Media;
+import com.tikay.homitest.domain.model.Series;
 import com.tikay.homitest.domain.repository.MediaRepository;
 
 import java.util.List;
@@ -21,14 +21,14 @@ public class MainViewModel extends ViewModel {
     MediaRepository mediaRepository;;
 
     //this is the data that we will fetch asynchronously
-    private MutableLiveData<List<Media>> mediaListLiveData;
+    private MutableLiveData<List<Series>> mediaListLiveData;
 
     public MainViewModel() {
         mediaRepository = new MediaRepositoryImpl();
     }
 
     //we will call this method to get the data
-    public LiveData<List<Media>> getMediaData() {
+    public LiveData<List<Series>> getMediaData() {
         //if the list is null
         if (mediaListLiveData == null) {
             mediaListLiveData = new MutableLiveData<>();

@@ -13,19 +13,17 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.tikay.homitest.R;
-import com.tikay.homitest.domain.model.Media;
+import com.tikay.homitest.domain.model.Series;
 import com.tikay.homitest.presentation.utils.Utils;
 import com.tikay.homitest.presentation.utils.images.ImageUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolder> {
+public class SeriesAdapter extends ListAdapter<Series, SeriesAdapter.SeriesViewHolder> {
 
-    public MediaAdapter() {
+    public SeriesAdapter() {
         super(DIFF_CALLBACK);
     }
 
@@ -34,18 +32,18 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
 
     @NonNull
     @Override
-    public MediaAdapter.MediaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SeriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
 //                .inflate(R.layout.holder_home_video, parent, false);
                 .inflate(R.layout.row_home_feed, parent, false);
 
 //        view = itemView;
-        return new MediaViewHolder(itemView);
+        return new SeriesViewHolder(itemView);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull MediaAdapter.MediaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SeriesViewHolder holder, int position) {
         holder.bind(getItem(position), position);
     }
 
@@ -55,20 +53,20 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
         return getCurrentList().size();
     }
 
-    public static final DiffUtil.ItemCallback<Media> DIFF_CALLBACK = new DiffUtil.ItemCallback<Media>() {
+    public static final DiffUtil.ItemCallback<Series> DIFF_CALLBACK = new DiffUtil.ItemCallback<Series>() {
         @Override
-        public boolean areItemsTheSame(@NonNull Media oldItem, @NonNull Media newItem) {
+        public boolean areItemsTheSame(@NonNull Series oldItem, @NonNull Series newItem) {
             return oldItem.getId() == newItem.getId();
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull Media oldItem, @NonNull Media newItem) {
+        public boolean areContentsTheSame(@NonNull Series oldItem, @NonNull Series newItem) {
             return oldItem.equals(newItem);
         }
     };
 
 
-    public static class MediaViewHolder extends RecyclerView.ViewHolder {
+    public static class SeriesViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tvTitle)
         TextView tvTitle;
         @BindView(R.id.tvDescription)
@@ -78,28 +76,28 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
 
         private View itemView;
 
-        public MediaViewHolder(View view) {
+        public SeriesViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
             itemView = view;
         }
 
-        private void bind(Media media, int position) {
+        private void bind(Series series, int position) {
 
-            tvTitle.setText(Utils.fromHtml(media.getTitle()));
+            tvTitle.setText(Utils.fromHtml(series.getTitle()));
             int margin = (int) Utils.dp2px(itemView.getContext(),8);
             ImageUtils.loadImage(
                     itemView.getContext(),
                     ivBanner,
-                    media.getBanner()
+                    series.getBanner()
             );
 
-            tvDescription.setText(Utils.fromHtml(media.getCategory()));
+            tvDescription.setText(Utils.fromHtml(series.getCategory()));
 
             itemView.setOnClickListener(view -> {
                 if (mOnItemClickListener != null) {
-                    ViewCompat.setTransitionName(ivBanner, media.getTitle());
-                    mOnItemClickListener.onItemClick(view, media, position);
+                    ViewCompat.setTransitionName(ivBanner, series.getTitle());
+                    mOnItemClickListener.onItemClick(view, series, position);
                 }
             });
 
@@ -111,7 +109,7 @@ public class MediaAdapter extends ListAdapter<Media, MediaAdapter.MediaViewHolde
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, Media media, int position);
+        void onItemClick(View view, Series series, int position);
     }
 }
 

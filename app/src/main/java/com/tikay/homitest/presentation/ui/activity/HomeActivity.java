@@ -8,7 +8,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowInsetsControllerCompat;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -53,7 +52,7 @@ public class HomeActivity extends AppCompatActivity{
         userViewModel.getUserData();
 
         navController.addOnDestinationChangedListener((navController1, destination, bundle) -> {
-            if (destination.getId() == R.id.homeFragment||
+            if (destination.getId() == R.id.seriesFragment ||
                     destination.getId() == R.id.categoriesFragment||
                     destination.getId() == R.id.menuFragment) {
                 bottomNavigationView.setVisibility(View.VISIBLE);

@@ -13,7 +13,7 @@ public class ApiResponse {
     private String message;
 
     @SerializedName("data")
-    private List<Media> mediaData;
+    private List<Series> seriesData;
 
 
     public boolean isStatus() {
@@ -24,8 +24,8 @@ public class ApiResponse {
         return message;
     }
 
-    public List<Media> getMediaDataList() {
-        return mediaData;
+    public List<Series> getMediaDataList() {
+        return seriesData;
     }
 
 
@@ -35,7 +35,7 @@ public class ApiResponse {
 			"Response{" +
 			"status = '" + status + '\'' +
 			",message = '" + message + '\'' +
-			",data = '" + mediaData + '\'' +
+			",data = '" + seriesData + '\'' +
 			"}";
 		}
 }

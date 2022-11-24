@@ -14,12 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tikay.homitest.R;
-import com.tikay.homitest.data.remote.service.ApiService;
-import com.tikay.homitest.data.remote.service.HomiRemoteService;
-import com.tikay.homitest.data.repository.MediaRepositoryImpl;
-import com.tikay.homitest.domain.model.Media;
-import com.tikay.homitest.domain.repository.MediaRepository;
-import com.tikay.homitest.presentation.adapters.MediaAdapter;
+import com.tikay.homitest.domain.model.Series;
+import com.tikay.homitest.presentation.adapters.SeriesAdapter;
 import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
 
 import java.util.List;
@@ -43,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     Toolbar toolbar;
 
 
-    private MediaAdapter mediaAdapter;
+    private SeriesAdapter seriesAdapter;
 
-    //    private List<Media> mediaList = new ArrayList<>();
+    //    private List<Series> mediaList = new ArrayList<>();
     private MainViewModel mainViewModel;
 
     private float ratio;
@@ -71,21 +67,21 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 //        feeds = new ArrayList<>();
 //        trending = new ArrayList<>();
-        mediaAdapter = new MediaAdapter();
+        seriesAdapter = new SeriesAdapter();
 
         rvHome.setLayoutManager(new LinearLayoutManager(this));
-        rvHome.setAdapter(mediaAdapter);
+        rvHome.setAdapter(seriesAdapter);
 
 //        dragFrame.setBottomFragment(getSupportFragmentManager(), DetailFragment.newInstance());
 //        dragFrame.setTopFragment(getSupportFragmentManager(), PlayFragment.newInstance());
 //        dragFrame.setOnDragListener(this);
 //        dragFrame.close();
-        mainViewModel.getMediaData().observe(this, new Observer<List<Media>>() {
+        mainViewModel.getMediaData().observe(this, new Observer<List<Series>>() {
             @Override
-            public void onChanged(List<Media> mediaList) {
-                Log.d("MainActivity", "data   : " + mediaList);
-//                mediaList = medias;
-                mediaAdapter.submitList(mediaList);
+            public void onChanged(List<Series> seriesList) {
+                Log.d("MainActivity", "data   : " + seriesList);
+//                seriesList = medias;
+                seriesAdapter.submitList(seriesList);
                 srHome.setRefreshing(false);
 
             }
@@ -97,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             srHome.setRefreshing(true);
         });
 
-        mediaAdapter.setOnItemClickListener((view, media, position) ->
+        seriesAdapter.setOnItemClickListener((view, media, position) ->
                 Toast.makeText(MainActivity.this, media.getTitle() + " Clicked", Toast.LENGTH_LONG).show()
         );
 

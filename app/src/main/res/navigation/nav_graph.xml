@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/seriesFragment">
 
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.tikay.homitest.presentation.ui.fragment.HomeFragment"
-        android:label="HomeFragment" >
+        android:id="@+id/seriesFragment"
+        android:name="com.tikay.homitest.presentation.ui.fragment.SeriesFragment"
+        android:label="SeriesFragment">
         <action
             android:id="@+id/action_homeFragment_to_seasonFragment"
             app:destination="@id/seasonFragment"
@@ -102,7 +102,7 @@
     <fragment
         android:id="@+id/authFragment"
         android:name="com.tikay.homitest.presentation.ui.fragment.AuthFragment"
-        android:label="fragment_login"
+        android:label="fragment_auth"
         tools:layout="@layout/fragment_auth" >
         <action
             android:id="@+id/action_loginFragment_to_playerFragment"
@@ -138,6 +138,7 @@
                 app:argType="integer"
                 android:defaultValue="0" />
         </action>
+
     </fragment>
 
     <fragment

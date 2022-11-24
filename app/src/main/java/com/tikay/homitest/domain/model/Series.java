@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Objects;
 
-public class Media {
+public class Series {
 
 	@SerializedName("id")
 	private int id;
@@ -213,9 +213,9 @@ public class Media {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Media)) return false;
-		Media media = (Media) o;
-		return id == media.id;
+		if (!(o instanceof Series)) return false;
+		Series series = (Series) o;
+		return id == series.id;
 	}
 
 	@Override

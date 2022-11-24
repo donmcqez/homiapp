@@ -53,6 +53,7 @@ public class UserViewModel extends AndroidViewModel {
         for (User user : userRepository.getUsers()) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 userRepository.saveUser(user);
+                loadAuthUser();
                 return user;
             }
         }
@@ -61,6 +62,7 @@ public class UserViewModel extends AndroidViewModel {
 
     public void signOut(){
         userRepository.signOut();
+        loadAuthUser();
     }
 
     private void loadUserList() {
@@ -70,5 +72,6 @@ public class UserViewModel extends AndroidViewModel {
 
     public void upgradeUser(boolean isPremium) {
         userRepository.updateUser(isPremium);
+        loadAuthUser();
     }
 }
