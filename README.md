@@ -80,7 +80,8 @@ Activities, Fragments, RecyclerViews, and the Manifest.
 ### Steps
 To run this application, you need to sync gradle dependencies and run.
 
-There are 5 mock users hard coded in the app
+There are 5 mock users hard coded in the app.
+Login using any of the users below with their corresponding email and password
 * Kwame Twum - email: kwame@homi.com", password: asdf1234 => premium user
 * Alex - email: tikay@homi.com", password: asdf1234 => premium user
 * Sarah - email: sarah@homi.com", password: asdf1234 => normal user
