@@ -295,6 +295,7 @@ public class PlayerFragment extends Fragment {
 //                            clSuggestion.setVisibility(View.GONE);
                             Log.e(TAG, "onPlaybackStateChanged: =========> SHOW SUGGESTIONS");
                             playerView.hideController();
+                            progressBar.setVisibility(View.GONE);
                             suggestionAdapter.submitList(suggestionList);
                             clSuggestion.setVisibility(View.VISIBLE);
                         }
