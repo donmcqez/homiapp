@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.ui.fragment;
+package com.tikay.homitest.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

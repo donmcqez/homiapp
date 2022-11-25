@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.ui.fragment;
+package com.tikay.homitest.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -18,9 +18,8 @@ import androidx.navigation.Navigation;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.User;
-import com.tikay.homitest.presentation.utils.Utils;
-import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
-import com.tikay.homitest.presentation.veiwmodel.UserViewModel;
+import com.tikay.homitest.utils.Utils;
+import com.tikay.homitest.ui.veiwmodel.UserViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

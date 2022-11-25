@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.veiwmodel;
+package com.tikay.homitest.ui.veiwmodel;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.ui.activity;
+package com.tikay.homitest.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

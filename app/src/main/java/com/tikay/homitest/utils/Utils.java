@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.utils;
+package com.tikay.homitest.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,7 +19,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.RequiresApi;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.tikay.homitest.HomiApp;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

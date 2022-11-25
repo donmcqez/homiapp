@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.adapters;
+package com.tikay.homitest.ui.adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Series;
-import com.tikay.homitest.presentation.utils.Utils;
-import com.tikay.homitest.presentation.utils.images.ImageUtils;
+import com.tikay.homitest.utils.Utils;
+import com.tikay.homitest.utils.images.ImageUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

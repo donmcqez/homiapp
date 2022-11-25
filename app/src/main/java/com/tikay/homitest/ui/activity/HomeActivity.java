@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.ui.activity;
+package com.tikay.homitest.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tikay.homitest.R;
-import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
-import com.tikay.homitest.presentation.veiwmodel.UserViewModel;
+import com.tikay.homitest.ui.veiwmodel.MainViewModel;
+import com.tikay.homitest.ui.veiwmodel.UserViewModel;
 
 import java.util.Objects;
 

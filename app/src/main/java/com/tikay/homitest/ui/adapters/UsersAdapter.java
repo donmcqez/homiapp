@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.adapters;
+package com.tikay.homitest.ui.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -17,8 +17,8 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Series;
-import com.tikay.homitest.presentation.utils.Utils;
-import com.tikay.homitest.presentation.utils.images.ImageUtils;
+import com.tikay.homitest.utils.Utils;
+import com.tikay.homitest.utils.images.ImageUtils;
 
 import java.util.ArrayList;
 import java.util.Locale;

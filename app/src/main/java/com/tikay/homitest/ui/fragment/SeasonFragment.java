@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.ui.fragment;
+package com.tikay.homitest.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -22,10 +22,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tikay.homitest.R;
 import com.tikay.homitest.domain.model.Series;
 import com.tikay.homitest.domain.model.Suggestion;
-import com.tikay.homitest.presentation.adapters.SuggestionAdapter;
-import com.tikay.homitest.presentation.utils.images.ImageUtils;
-import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
-import com.tikay.homitest.presentation.veiwmodel.UserViewModel;
+import com.tikay.homitest.ui.adapters.SuggestionAdapter;
+import com.tikay.homitest.utils.images.ImageUtils;
+import com.tikay.homitest.ui.veiwmodel.MainViewModel;
+import com.tikay.homitest.ui.veiwmodel.UserViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

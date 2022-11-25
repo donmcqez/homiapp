@@ -1,4 +1,4 @@
-package com.tikay.homitest.presentation.ui.fragment;
+package com.tikay.homitest.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tikay.homitest.R;
-import com.tikay.homitest.presentation.adapters.SeriesAdapter;
-import com.tikay.homitest.presentation.veiwmodel.MainViewModel;
+import com.tikay.homitest.ui.adapters.SeriesAdapter;
+import com.tikay.homitest.ui.veiwmodel.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,6 +1,5 @@
-package com.tikay.homitest.presentation.ui.fragment;
+package com.tikay.homitest.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,25 +8,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.chip.Chip;
 import com.tikay.homitest.R;
-import com.tikay.homitest.presentation.veiwmodel.UserViewModel;
+import com.tikay.homitest.ui.veiwmodel.UserViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-@SuppressLint("NonConstantResourceId")
-public class AccountFragment extends Fragment {
-    public AccountFragment() {
+public class MenuFragment extends Fragment {
+
+    public MenuFragment() {
         super(R.layout.fragment_account);
     }
 
-    private static final String TAG = AccountFragment.class.getSimpleName();
-    private int seasonId = -1;
+    private static final String TAG = MenuFragment.class.getSimpleName();
     private UserViewModel userViewModel;
     private NavController navController;
 
@@ -45,9 +42,6 @@ public class AccountFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
 
-//        mediaPosition = SeasonFragmentArgs.fromBundle(getArguments());
-        seasonId = getArguments() != null ? getArguments().getInt("seriesId") : 0;
-
         initViewModel();
         observeAuth();
     }
@@ -60,11 +54,10 @@ public class AccountFragment extends Fragment {
     private void observeAuth() {
         userViewModel.observeUser().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
-                if (user.isPremium() && seasonId >= 0)
+                if (user.isPremium())
                     chipUpgrade.setVisibility(View.INVISIBLE);
 
                 chipLogin.setVisibility(View.INVISIBLE);
-                chipDeleteAuth.setVisibility(View.INVISIBLE);
             } else {
                 chipUpgrade.setVisibility(View.INVISIBLE);
                 chipDeleteAuth.setVisibility(View.INVISIBLE);
@@ -74,28 +67,33 @@ public class AccountFragment extends Fragment {
 
     }
 
+    @OnClick(R.id.chipLogin)
+    public void login() {
+//        navController.popBackStack(R.id.authFragment,true);
+//        NavOptions navOptions = new NavOptions.Builder()
+//                .setPopUpTo(R.id.seriesFragment,false)
+//                .build();
+//        navController.navigate(R.id.authFragment,null,navOptions);
+        navController.navigate(R.id.authFragment);
+//        navController.popBackStack();
+    }
+
     @OnClick(R.id.chipUpgrade)
     public void upgradeAccount() {
         userViewModel.upgradeUser(true);
 
-//        AccountFragmentDirections.ActionAccountFragmentToPlayerFragment action =
-//                AccountFragmentDirections.actionAccountFragmentToPlayerFragment();
-//        navController.navigate(action);
-        navController.popBackStack();
+        MenuFragmentDirections.ActionMenuFragmentToSeasonFragment action =
+                MenuFragmentDirections.actionMenuFragmentToSeasonFragment();
+        navController.navigate(action);
     }
 
     @OnClick(R.id.chipDeleteAuth)
     public void signOut() {
         userViewModel.signOut();
+//        navController.popBackStack(R.id.homeFragment,true);
+//        AccountFragmentDirections.ActionAccountFragmentToHomeFragment action =
+//                AccountFragmentDirections.actionAccountFragmentToHomeFragment();
 
-//        navController.navigate(AccountFragmentDirections.actionAccountFragmentToSeriesFragment());
-//        NavOptions navOptions = new NavOptions.Builder()
-//                .setPopUpTo(R.id.seriesFragment,false)
-//                .build();
-//        navController.navigate(R.id.authFragment,null,navOptions);
-
-        navController.popBackStack();
+//        navController.navigate(MenuFragmentDirections.actionMenuFragmentToSeasonFragment());
     }
-
-
 }

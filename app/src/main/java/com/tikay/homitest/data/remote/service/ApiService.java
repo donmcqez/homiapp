@@ -1,9 +1,11 @@
 package com.tikay.homitest.data.remote.service;
 
-public class ApiService {
-    private static final String BASE_URL_API = "https://homitv.traytontech.com/";
+import com.tikay.homitest.domain.model.ApiResponse;
+import retrofit2.Call;
+import retrofit2.http.GET;
 
-    public static HomiRemoteService getAPIService(){
-        return RetrofitClient.getClient(BASE_URL_API).create(HomiRemoteService.class);
-    }
+public interface ApiService {
+    @GET("test/response.json")
+    Call<ApiResponse> getMediaData();
+
 }
