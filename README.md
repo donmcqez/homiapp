@@ -100,7 +100,7 @@ Login using any of the users below with their corresponding email and password.
 * [Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - An OkHttp interceptor which logs HTTP request and response data.
 * [GSON](https://github.com/google/gson) - A serialization/deserialization library to convert Objects into JSON and back.
 * [Mockito](https://site.mockito.org) - Mocking framework for unit tests.
-* [Glide] - Image loading library.
-* [ExoPlayer] - Video player library.
-* [Butterknife] - view injection library.
+* [Glide]() - Image loading library.
+* [ExoPlayer]() - Video player library.
+* [Butterknife]() - view injection library.
 
