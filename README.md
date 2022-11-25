@@ -55,6 +55,9 @@ This project is a streaming App for movies and series.
 * Each use-case performs only one function, i.e ***single responsibility*** as described in [S.O.L.I.D] principle. .
 * Provide code re-usability
 * Testable business logic via Unit Tests.
+
+## Dependency Injection(DI)
+* Manual constructor injection 
 ---
 
 ## The app has following packages 
