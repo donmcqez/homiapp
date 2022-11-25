@@ -74,7 +74,7 @@ This project is a streaming App for movies and series.
 This project was written using Java in Android Studio Dolphin | 2021.3.1 Patch 1
 
 ### Prerequisites
-This project assumes a base knowledge of Kotlin and Android, such as
+This project assumes a base knowledge of Java and Android, such as
 Activities, Fragments, RecyclerViews, and the Manifest.
 
 ### Steps
