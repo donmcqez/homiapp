@@ -46,6 +46,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @SuppressLint("NonConstantResourceId")
+@OptIn(markerClass = UnstableApi.class)
 public class PlayerFragment extends Fragment {
     private static final String TAG = "PlayerFragment";
 
@@ -293,6 +294,7 @@ public class PlayerFragment extends Fragment {
                         if (duration > 0 && currentPosition >= duration) {
 //                            clSuggestion.setVisibility(View.GONE);
                             Log.e(TAG, "onPlaybackStateChanged: =========> SHOW SUGGESTIONS");
+                            playerView.hideController();
                             suggestionAdapter.submitList(suggestionList);
                             clSuggestion.setVisibility(View.VISIBLE);
                         }
@@ -345,16 +347,7 @@ public class PlayerFragment extends Fragment {
         @Override
         public void onPlayerError(PlaybackException error) {
             Log.e(TAG, "onPlayerError: =========> ", error);
-//            if (error.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
-//                player.seekToDefaultPosition();
-//                player.prepare();
-//                player.play();
-//            }
-//            if (error.errorCode == PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS) {
-//                player.seekTo(player.getCurrentPosition());
-//                player.prepare();
-//                player.play();
-//            }
+            // prepare the player and try to play again
             player.prepare();
             player.play();
         }
